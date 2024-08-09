@@ -59,6 +59,11 @@ jobs:
           echo DB_DATABASE=:memory:
           cat .env
 
+      - name: Create Database
+        run: |
+          mkdir -p database
+          touch database/database.sqlite
+
       - name: Run Migrations
         run: |
           php artisan key:generate
