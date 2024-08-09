@@ -36,6 +36,5 @@ class UnitSeeder extends Seeder
                 });
             });
         });
-        dd(\App\Models\Unit::first());
     }
 }
