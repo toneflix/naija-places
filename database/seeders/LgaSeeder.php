@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Lga;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
@@ -22,9 +23,9 @@ class LgaSeeder extends Seeder
             }
 
             collect($all->firstWhere('state', $state->slug)->lgas)->each(function ($slug) use ($state, $lgas) {
-
                 $data = $lgas->firstWhere(
-                    fn($key) => str($key->name)->slug()->is($slug) || str($key->name)->camel()->lower()->is($slug)
+                    fn($key) => str($key->name)->slug('-', 'en', ['/' => '-', '&' => '-'])->is($slug) ||
+                        str($key->name)->camel()->lower()->is($slug)
                 );
 
                 if ($data) {
