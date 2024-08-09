@@ -1,0 +1,187 @@
+[
+    {
+        "id": "1",
+        "name": "Abia",
+        "code": "AB"
+    },
+    {
+        "id": "2",
+        "name": "Adamawa",
+        "code": "AD"
+    },
+    {
+        "id": "3",
+        "name": "Akwa Ibom",
+        "code": "AK"
+    },
+    {
+        "id": "4",
+        "name": "Anambra",
+        "code": "AN"
+    },
+    {
+        "id": "5",
+        "name": "Bauchi",
+        "code": "BA"
+    },
+    {
+        "id": "6",
+        "name": "Bayelsa",
+        "code": "BY"
+    },
+    {
+        "id": "7",
+        "name": "Benue",
+        "code": "BE"
+    },
+    {
+        "id": "8",
+        "name": "Borno",
+        "code": "BO"
+    },
+    {
+        "id": "9",
+        "name": "Cross River",
+        "code": "CR"
+    },
+    {
+        "id": "10",
+        "name": "Delta",
+        "code": "DE"
+    },
+    {
+        "id": "11",
+        "name": "Ebonyi",
+        "code": "EB"
+    },
+    {
+        "id": "12",
+        "name": "Edo",
+        "code": "ED"
+    },
+    {
+        "id": "13",
+        "name": "Ekiti",
+        "code": "EK"
+    },
+    {
+        "id": "14",
+        "name": "Enugu",
+        "code": "EN"
+    },
+    {
+        "id": "15",
+        "name": "FCT",
+        "code": "FC"
+    },
+    {
+        "id": "16",
+        "name": "Gombe",
+        "code": "GO"
+    },
+    {
+        "id": "17",
+        "name": "Imo",
+        "code": "IM"
+    },
+    {
+        "id": "18",
+        "name": "Jigawa",
+        "code": "JI"
+    },
+    {
+        "id": "19",
+        "name": "Kaduna",
+        "code": "KD"
+    },
+    {
+        "id": "20",
+        "name": "Kano",
+        "code": "KN"
+    },
+    {
+        "id": "21",
+        "name": "Katsina",
+        "code": "KT"
+    },
+    {
+        "id": "22",
+        "name": "Kebbi",
+        "code": "KE"
+    },
+    {
+        "id": "23",
+        "name": "Kogi",
+        "code": "KO"
+    },
+    {
+        "id": "24",
+        "name": "Kwara",
+        "code": "KW"
+    },
+    {
+        "id": "25",
+        "name": "Lagos",
+        "code": "LA"
+    },
+    {
+        "id": "26",
+        "name": "Nasarawa",
+        "code": "NA"
+    },
+    {
+        "id": "27",
+        "name": "Niger",
+        "code": "NI"
+    },
+    {
+        "id": "28",
+        "name": "Ogun",
+        "code": "OG"
+    },
+    {
+        "id": "29",
+        "name": "Ondo",
+        "code": "ON"
+    },
+    {
+        "id": "30",
+        "name": "Osun",
+        "code": "OS"
+    },
+    {
+        "id": "31",
+        "name": "Oyo",
+        "code": "OY"
+    },
+    {
+        "id": "32",
+        "name": "Plateau",
+        "code": "PL"
+    },
+    {
+        "id": "33",
+        "name": "Rivers",
+        "code": "RI"
+    },
+    {
+        "id": "34",
+        "name": "Sokoto",
+        "code": "SO"
+    },
+    {
+        "id": "35",
+        "name": "Taraba",
+        "code": "TA"
+    },
+    {
+        "id": "36",
+        "name": "Yobe",
+        "code": "YO"
+    },
+    {
+        "id": "37",
+        "name": "Zamfara",
+        "code": "ZA"
+    }
+]
