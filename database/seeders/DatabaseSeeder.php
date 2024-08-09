@@ -15,9 +15,9 @@ class DatabaseSeeder extends Seeder
     {
         $ignoreAdmin = collect(request(null)->server('argv'))->contains(fn($key) => str($key)->contains('phpunit'));
 
-        $adminEmail = 'admin@example.com';
+        $adminEmail = env('CI_ADMIN_EMAIL', 'admin@example.com');
 
-        if (!$ignoreAdmin) {
+        if (!$ignoreAdmin && !env('CI_ADMIN_EMAIL')) {
             if (app()->runningInConsole()) {
                 $adminEmail = $this->command->ask('Enter admin email address', $adminEmail);
             }
@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
         }
 
         $this->call([
+            ConfigurationSeeder::class,
             StateSeeder::class,
             LgaSeeder::class,
             WardSeeder::class,
