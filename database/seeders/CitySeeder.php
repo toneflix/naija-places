@@ -22,7 +22,7 @@ class CitySeeder extends Seeder
 
                 \App\Models\City::unguard();
                 \App\Models\City::insert([
-                    'slug' => str($name)->slug('-'),
+                    'slug' => str($name)->slug('-', 'en', ['/' => '-', '&' => '-']),
                     'name' => str($name)->title()->replace('-', ' '),
                     'state_id' => $state->id,
                     "created_at" => now(),

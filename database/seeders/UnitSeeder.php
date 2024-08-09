@@ -25,7 +25,7 @@ class UnitSeeder extends Seeder
                 collect($units)->each(function ($slug) use ($state, $ward) {
                     \App\Models\Unit::unguard();
                     \App\Models\Unit::insert([
-                        'slug' => str($slug)->slug('-'),
+                        'slug' => str($slug)->slug('-', 'en', ['/' => '-', '&' => '-']),
                         'name' => str($slug)->title()->replace('-', ' '),
                         'lga_id' => $ward->lga->id,
                         'ward_id' => $ward->id,

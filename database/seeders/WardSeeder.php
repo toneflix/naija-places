@@ -24,7 +24,7 @@ class WardSeeder extends Seeder
                 $wards->each(function ($slug) use ($state, $lga) {
                     \App\Models\Ward::unguard();
                     \App\Models\Ward::insert([
-                        'slug' => str($slug)->slug('-'),
+                        'slug' => str($slug)->slug('-', 'en', ['/' => '-', '&' => '-']),
                         'name' => str($slug)->title()->replace('-', ' '),
                         'lga_id' => $lga->id,
                         'state_id' => $state->id,

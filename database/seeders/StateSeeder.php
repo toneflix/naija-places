@@ -17,7 +17,7 @@ class StateSeeder extends Seeder
         $all->each(function ($data) {
             \App\Models\State::unguard();
             \App\Models\State::insert([
-                'slug' => str($data->name)->slug('-'),
+                'slug' => str($data->name)->slug('-', 'en', ['/' => '-', '&' => '-']),
                 'code' => $data->code,
                 'name' => str($data->name)->slug()->is('abuja') ? 'Federal Capital Territory (Abuja)' : $data->name,
                 "created_at" => now(),

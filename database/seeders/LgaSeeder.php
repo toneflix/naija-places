@@ -32,7 +32,7 @@ class LgaSeeder extends Seeder
                 if ($data) {
                     \App\Models\Lga::unguard();
                     \App\Models\Lga::insert([
-                        'slug' => str($data->name)->slug('-'),
+                        'slug' => str($data->name)->slug('-', 'en', ['/' => '-', '&' => '-']),
                         'code' => $data->code,
                         'name' => $data->name,
                         'state_id' => $state->id,
