@@ -71,7 +71,7 @@ jobs:
 
       - name: Seed Database
         run: |
-          php artisan CI_ADMIN_EMAIL=admin@example.com db:seed
+          CI_ADMIN_EMAIL=admin@example.com php artisan db:seed
 
       - name: Execute tests
         run: composer run-test
