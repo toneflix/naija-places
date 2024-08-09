@@ -14,6 +14,7 @@ class LgaSeeder extends Seeder
      */
     public function run(): void
     {
+        Lga::truncate();
         $states = \App\Models\State::all();
         $lgas = collect(json_decode(File::get(database_path('data/lga_short_codes.json'))));
         $all = collect(json_decode(File::get(database_path('data/states-and-lgas.json'))));
