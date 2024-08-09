@@ -56,7 +56,6 @@ jobs:
           echo PAYSTACK_PUBLIC_KEY=${{ secrets.PAYSTACK_PUBLIC_KEY }} >> .env
           echo PAYSTACK_SECRET_KEY=${{ secrets.PAYSTACK_SECRET_KEY }} >> .env
           echo DB_CONNECTION=sqlite
-          echo DB_DATABASE=:memory:
           cat .env
 
       - name: Create Database
@@ -71,7 +70,9 @@ jobs:
 
       - name: Seed Database
         run: |
-          CI_ADMIN_EMAIL=admin@example.com php artisan db:seed
+          php artisan db:seed
+        env:
+          CI_ADMIN_EMAIL: admin@example.com
 
       - name: Execute tests
         run: composer run-test
