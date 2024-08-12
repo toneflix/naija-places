@@ -27,6 +27,7 @@ class State extends Model
     {
         return $this->where('id', $value)
             ->orWhere('slug', $value)
+            ->orWhere('code', $value)
             ->firstOrFail();
     }
 

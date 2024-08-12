@@ -8,7 +8,7 @@ To start using the Naija Places API, you’ll need to generate an API key. Follo
 
 ## Step 1: Register or Log In
 
-1. Visit the Naija Places API [Portal](login).
+1. Visit the Naija Places API [Portal](portal).
 2. Register for an account if you don’t have one. Provide the necessary details and verify your email address.
 3. If you already have an account, simply log in using your credentials.
 

@@ -2,10 +2,12 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+    head: [['link', { rel: 'icon', href: '/docs/logo.png' }]],
     title: "Naija Places API",
     description: "One api to rule them all, query all states, Local government areas, Wards, Polling Units and Towns in Nigeria.",
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
+        logo: '/docs/logo.png',
         nav: [
             { text: 'Home', link: '/' },
             { text: 'Portal', link: '/portal' }
@@ -16,17 +18,28 @@ export default defineConfig({
                 text: 'Usage',
                 items: [
                     { text: 'Api Documentation', link: '/api-documentation' },
-                    { text: 'States', link: '/states' },
-                    { text: 'LGAs', link: '/lgas' },
-                    { text: 'Wards', link: '/wards' },
-                    { text: 'Polling Units', link: '/units' },
-                    { text: 'Towns and Cities', link: '/cities' },
+                    { text: 'States', link: '/docs/states' },
+                    { text: 'LGAs', link: '/docs/lgas' },
+                    { text: 'Wards', link: '/docs/wards' },
+                    { text: 'Polling Units', link: '/docs/units' },
+                    { text: 'Towns and Cities', link: '/docs/cities' },
                 ]
             }
         ],
 
         socialLinks: [
-            { icon: 'github', link: 'https://github.com/toneflix/vitepress' }
-        ]
+            { icon: 'github', link: 'https://github.com/toneflix/naijaplaces' }
+        ],
+        footer: {
+            message: 'Released under the MIT License.',
+            copyright: 'Copyright © ' + (new Date().getFullYear()) + ' Toneflix'
+        },
+        lastUpdated: {
+            text: 'Last updated',
+            formatOptions: {
+                dateStyle: 'full',
+                timeStyle: 'medium'
+            }
+        }
     }
 })
