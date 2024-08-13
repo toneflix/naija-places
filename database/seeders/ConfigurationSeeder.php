@@ -186,6 +186,30 @@ class ConfigurationSeeder extends Seeder
                 'hint' => 'Will be prepend to every reference string.',
                 'secret' => false,
             ],
+            [
+                'key' => 'default_rate_limit',
+                'title' => 'Default Rate Limit',
+                'value' => 500,
+                'type' => 'number',
+                'count' => null,
+                'max' => null,
+                'col' => 6,
+                'autogrow' => false,
+                'hint' => 'The default rate limit for new api keys.',
+                'secret' => false,
+            ],
+            [
+                'key' => 'freemium_domains',
+                'title' => 'Freemium Domains',
+                'value' => '',
+                'type' => 'array',
+                'count' => null,
+                'max' => null,
+                'col' => 6,
+                'autogrow' => false,
+                'hint' => 'Rate limiting will not be applied to these domains.',
+                'secret' => false,
+            ],
         ]);
     }
 }

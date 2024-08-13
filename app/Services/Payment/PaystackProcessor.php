@@ -121,7 +121,7 @@ class PaystackProcessor implements PaymentInterface
             $response->message = $msg;
             $response->payload = $tranx;
             $response->reference = $reference;
-            $response->status_code = $code;
+            $response->statusCode = $code;
         }
 
         // Return the response as a collection
@@ -207,7 +207,7 @@ class PaystackProcessor implements PaymentInterface
         if (! $error_callback && ! $callback) {
             $response->message = $msg;
             $response->payload = $tranx;
-            $response->status_code = $code;
+            $response->statusCode = $code;
             $response->payment_approved = $tranx->payment_approved ?? false;
         }
 
@@ -260,7 +260,7 @@ class PaystackProcessor implements PaymentInterface
         if (! $error_callback && ! $callback) {
             $response->message = $msg;
             $response->payload = $tranx;
-            $response->status_code = $code;
+            $response->statusCode = $code;
         }
 
         return new \App\Services\CustomObject($response);
@@ -350,7 +350,7 @@ class PaystackProcessor implements PaymentInterface
         if (! $errorCallback && ! $successCallback) {
             $response->message = $msg;
             $response->payload = $tranx;
-            $response->status_code = $code;
+            $response->statusCode = $code;
         }
 
         return new \App\Services\CustomObject($response);

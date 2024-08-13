@@ -20,6 +20,7 @@ class Lga extends Model
     public function resolveRouteBinding($value, $field = null)
     {
         return $this->where('id', $value)
+            ->orWhereRaw('LOWER(code) = ?', [mb_strtolower($value)])
             ->orWhere('slug', $value)
             ->firstOrFail();
     }

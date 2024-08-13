@@ -2,7 +2,16 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-    head: [['link', { rel: 'icon', href: '/docs/logo.png' }]],
+    head: [
+        ['link', { rel: 'icon', href: '/docs/logo.png' }],
+        ['link', {
+            rel: 'stylesheet',
+            href: 'https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css',
+            integrity: 'sha512-OQDNdI5rpnZ0BRhhJc+btbbtnxaj+LdQFeh0V9/igiEPDiWE2fG+ZsXl0JEH+bjXKPJ3zcXqNyP4/F/NegVdZg==',
+            crossorigin: 'anonymous',
+            referrerpolicy: 'no-referrer'
+        }],
+    ],
     title: "Naija Places API",
     description: "One api to rule them all, query all states, Local government areas, Wards, Polling Units and Towns in Nigeria.",
     themeConfig: {
@@ -10,7 +19,7 @@ export default defineConfig({
         logo: '/docs/logo.png',
         nav: [
             { text: 'Home', link: '/' },
-            { text: 'Portal', link: '/portal' }
+            { text: 'Portal', link: '/portal/home' }
         ],
 
         sidebar: [

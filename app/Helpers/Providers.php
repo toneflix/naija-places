@@ -45,7 +45,7 @@ class Providers
             return $config;
         }
 
-        return Arr::get($config, $key, $default);
+        return Arr::get($config, $key, $default) ?? $default;
     }
 
     /**
@@ -108,7 +108,7 @@ class Providers
         if ($data instanceof JsonResource) {
             return $data->additional([
                 ...$extra,
-                'status_code' => $status,
+                'statusCode' => $status,
                 'message' => $extra['message'] ?? $data['message'] ?? HttpStatus::from($status)->name,
                 'status' => $type,
             ])->response()->setStatusCode($status);
@@ -121,7 +121,7 @@ class Providers
         // Return  the data wrapped in an "information" array and set the status to informational.
         $response = [
             'data' => is_array($data) ? ($data['data'] ?? $data) : $data,
-            'status_code' => $status,
+            'statusCode' => $status,
             'message' => HttpStatus::from($status)->name,
             'status' => $type,
             ...$data,
@@ -191,12 +191,12 @@ class Providers
     public static function paginator(LengthAwarePaginator $data): array
     {
         if ($data instanceof LengthAwarePaginator) {
-            $links = $data->linkCollection()->filter(fn ($link) => is_numeric($link['label']));
+            $links = $data->linkCollection()->filter(fn($link) => is_numeric($link['label']));
 
             return [
                 'data' => count(static::$responseKeys)
                     ? collect($data->items())
-                    ->map(fn ($e) => collect($e)->filter(fn ($k, $v) => in_array($v, static::$responseKeys)))
+                    ->map(fn($e) => collect($e)->filter(fn($k, $v) => in_array($v, static::$responseKeys)))
                     : $data->items(),
                 'meta' => [
                     'current_page' => $data->currentPage(),

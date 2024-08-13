@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Helpers\Providers;
+use App\Helpers\Strings;
 use App\Models\Configuration;
 use Illuminate\Console\Command;
 
@@ -70,7 +71,7 @@ class SetConfig extends Command
          * Check if the provided value is valid
          */
         $validate = match (true) {
-            in_array($type, ['json', 'array']) => is_array($value) || Providers::jsonValidate($value),
+            in_array($type, ['json', 'array']) => is_array($value) || Strings::jsonValidate($value),
             in_array($type, ['string', 'text']) => is_string($value),
             in_array($type, ['bool', 'boolean']) => filter_var($value, FILTER_VALIDATE_BOOLEAN),
             in_array($type, ['number', 'integer', 'int']) => filter_var($value, FILTER_VALIDATE_INT),

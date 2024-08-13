@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.swal-overlay {
+    @apply bg-[#000000ca];
+}
+
+.swal-button {
+    @apply px-4 py-2 text-xs rounded-sm;
+}
+
+.dark .swal-button--confirm {
+    @apply text-white bg-green-600;
+}
+
+.dark .swal-button--cancel {
+    @apply text-white bg-red-600;
+}
+
+.dark .swal-modal {
+    @apply bg-gray-800;
+}
+.dark .swal-title {
+    @apply text-white;
+}
+.dark .swal-text {
+    @apply text-gray-200;
+}

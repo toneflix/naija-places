@@ -130,7 +130,7 @@ class User extends Authenticatable
     protected function fullname(): Attribute
     {
         return Attribute::make(
-            get: fn () => collect([$this->firstname, $this->lastname])->join(' '),
+            get: fn() => collect([$this->firstname, $this->lastname])->join(' '),
         );
     }
 
@@ -209,8 +209,8 @@ class User extends Authenticatable
     protected function userData(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->data,
-            set: fn ($value) => is_array($value)
+            get: fn() => $this->data,
+            set: fn($value) => is_array($value)
                 ? json_encode($value, JSON_FORCE_OBJECT)
                 : $value,
         );
@@ -224,5 +224,15 @@ class User extends Authenticatable
     public function temp(): BelongsTo
     {
         return $this->belongsTo(TempUser::class, 'email', 'email');
+    }
+
+    /**
+     * Get all of the apiKeys for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function apiKeys(): HasMany
+    {
+        return $this->hasMany(ApiKey::class);
     }
 }

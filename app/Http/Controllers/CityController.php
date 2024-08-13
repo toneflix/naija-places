@@ -18,7 +18,7 @@ class CityController extends Controller
         return (new CityCollection($lgas))->additional([
             'status' => 'success',
             'message' => HttpStatus::message(HttpStatus::OK),
-            'status_code' => HttpStatus::OK,
+            'statusCode' => HttpStatus::OK,
         ]);
     }
 }

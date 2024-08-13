@@ -1,14 +1,29 @@
-import { computed, ref } from "vue"
-
 import { defineStore } from "pinia"
+import { ref } from "vue"
+
+export type User = { id: string, email: string, phone: string, imageUrl: string, fullname: string }
 
 export const bootstrapStore = defineStore('bootstrap', () => {
-    const count = ref(0)
-    const name = ref('Eduardo')
-    const doubleCount = computed(() => count.value * 2)
-    function increment () {
-        count.value++
+    const user = ref<User>(<User>{})
+    const token = ref<string | null>(null)
+    const cache = ref<any>({})
+    const redirect = ref<string | undefined>()
+
+    function saveAuthUser (us: any, tk: string) {
+        user.value = us
+        token.value = tk
     }
 
-    return { count, name, doubleCount, increment }
+    function clearAuth () {
+        return new Promise(() => {
+            token.value = null
+            user.value = <User>{}
+        })
+    }
+
+    function setRedirect (to?: string) {
+        redirect.value = to
+    }
+
+    return { user, token, cache, redirect, clearAuth, setRedirect, saveAuthUser }
 })

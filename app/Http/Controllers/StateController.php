@@ -18,7 +18,7 @@ class StateController extends Controller
         return (new StateCollection($states))->additional([
             'status' => 'success',
             'message' => HttpStatus::message(HttpStatus::OK),
-            'status_code' => HttpStatus::OK,
+            'statusCode' => HttpStatus::OK,
         ]);
     }
 }

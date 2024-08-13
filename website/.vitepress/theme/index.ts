@@ -3,7 +3,10 @@ import { h } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import { createPinia } from "pinia";
+import { createPersistedState } from 'pinia-plugin-persistedstate'
 import './style.css'
+import './css/custom.css'
+import 'simple-notify/dist/simple-notify.css'
 
 export default {
     extends: DefaultTheme,
@@ -14,6 +17,21 @@ export default {
     },
     enhanceApp ({ app, router, siteData }) {
         const pinia = createPinia();
+        pinia.use(createPersistedState({
+            auto: true,
+        }))
         app.use(pinia);
+
+        const comps = import.meta.glob('./components/**/*.vue', { eager: true })
+
+        Object.entries(comps).forEach(([path, definition]) => {
+            if (path) {
+                const name = path.split('/').pop()?.replace(/\.\w+$/, '')
+                if (name) {
+                    app.component(name, (<{ default: () => any }>definition).default)
+                }
+            }
+
+        })
     }
 } satisfies Theme

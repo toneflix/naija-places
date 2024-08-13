@@ -14,12 +14,12 @@ class WardController extends Controller
     {
         $query = $lga->wards()->getQuery();
 
-        $lgas = $query->get();
+        $wards = $query->get();
 
-        return (new WardCollection($lgas))->additional([
+        return (new WardCollection($wards))->additional([
             'status' => 'success',
             'message' => HttpStatus::message(HttpStatus::OK),
-            'status_code' => HttpStatus::OK,
+            'statusCode' => HttpStatus::OK,
         ]);
     }
 }

@@ -7,7 +7,7 @@ use App\Http\Controllers\UnitController;
 use App\Http\Controllers\WardController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('states')->name('states.')->group(function () {
+Route::middleware([\App\Http\Middleware\ApiAccessMiddleware::class])->prefix('states')->name('states.')->group(function () {
     Route::get('/', [StateController::class, 'index'])->name('index');
     Route::get('/{state}/lgas', [LgaController::class, 'index'])->name('lgas.index');
     Route::get('/{state}/lgas/{lga}/wards', [WardController::class, 'index'])->name('wards.index');

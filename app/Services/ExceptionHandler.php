@@ -29,9 +29,9 @@ class ExceptionHandler // extends Handler
         static::$request = $request;
 
         if ($request->isXmlHttpRequest() || request()->is('api/*')) {
-            $line = method_exists($e, 'getFile') ? ' in '.$e->getFile() : '';
-            $line .= method_exists($e, 'getLine') ? ' on line '.$e->getLine() : '';
-            $msg = method_exists($e, 'getMessage') ? $e->getMessage().$line : 'An error occured'.$line;
+            $line = method_exists($e, 'getFile') ? ' in ' . $e->getFile() : '';
+            $line .= method_exists($e, 'getLine') ? ' on line ' . $e->getLine() : '';
+            $msg = method_exists($e, 'getMessage') ? $e->getMessage() . $line : 'An error occured' . $line;
             $plainMessage = method_exists($e, 'getMessage') ? $e->getMessage() : null;
 
             if ((bool) collect($e?->getTrace())->firstWhere('function', 'abort')) {
@@ -42,22 +42,22 @@ class ExceptionHandler // extends Handler
 
             return match (true) {
                 $e instanceof NotFoundHttpException ||
-                $e instanceof ModelNotFoundException => static::renderException(
+                    $e instanceof ModelNotFoundException => static::renderException(
                     str(str($msg)->contains('The route')
                         ? str($msg)->before('.')->append('.')
                         : HttpStatus::message(HttpStatus::NOT_FOUND))->replace('resource', $prefix ?: 'resource'),
                     HttpStatus::NOT_FOUND
                 ),
                 $e instanceof \Spatie\Permission\Exceptions\UnauthorizedException ||
-                $e instanceof AuthorizationException ||
-                $e instanceof AccessDeniedHttpException ||
-                $e->getCode() === HttpStatus::FORBIDDEN => static::renderException(
+                    $e instanceof AuthorizationException ||
+                    $e instanceof AccessDeniedHttpException ||
+                    $e->getCode() === HttpStatus::FORBIDDEN => static::renderException(
                     $plainMessage ? $plainMessage : HttpStatus::message(HttpStatus::FORBIDDEN),
                     HttpStatus::FORBIDDEN
                 ),
                 $e instanceof AuthenticationException ||
-                $e instanceof UnauthorizedHttpException => static::renderException(
-                    HttpStatus::message(HttpStatus::UNAUTHORIZED),
+                    $e instanceof UnauthorizedHttpException => static::renderException(
+                    $plainMessage !== 'Unauthenticated.' ? $plainMessage :  HttpStatus::message(HttpStatus::UNAUTHORIZED),
                     HttpStatus::UNAUTHORIZED
                 ),
                 $e instanceof MethodNotAllowedHttpException => static::renderException(
@@ -74,7 +74,7 @@ class ExceptionHandler // extends Handler
                     HttpStatus::UNPROCESSABLE_ENTITY
                 ),
                 $e instanceof ThrottleRequestsException => static::renderException(
-                    HttpStatus::message(HttpStatus::TOO_MANY_REQUESTS),
+                    $plainMessage ?: HttpStatus::message(HttpStatus::TOO_MANY_REQUESTS),
                     HttpStatus::TOO_MANY_REQUESTS
                 ),
                 default => static::renderException($msg, HttpStatus::SERVER_ERROR),

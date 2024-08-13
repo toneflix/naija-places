@@ -11,7 +11,7 @@ outline: deep
 This endpoint uses the API KEY as a bearer token for authentication.
 
 ```
-Name: Authorization: Bearer API_KEY
+X-Api-key: API_KEY
 In: header
 ```
 
@@ -28,6 +28,7 @@ In: header
 | 200  | Returns a list of all cities for the given state |
 | 401  | Unauthorized.                                    |
 | 404  | Not Found.                                       |
+| 429  | Rate limit exeeded                               |
 
 ## Example Usage
 
@@ -41,7 +42,7 @@ const options = {
     redirect: "follow",
 };
 
-headers.append("Authorization", "Bearer API_KEY");
+headers.append("X-Api-key", "API_KEY");
 
 fetch("https://naija-places.toneflix.ng/v1/states/ab/cities", options)
     .then((response) => response.json())
@@ -129,7 +130,21 @@ if (response.statusCode == 200) {
 
 ```json
 {
-    "error": "Unauthorized. You do not have access to this resource."
+    "data": {},
+    "statusCode": 401,
+    "message": "Unauthorized. You do not have access to this resource.",
+    "status": "error"
+}
+```
+
+### 429 Error Response
+
+```json
+{
+    "data": {},
+    "statusCode": 429,
+    "message": "Rate limit exeeded: you may try again in 54 seconds.",
+    "status": "error"
 }
 ```
 
@@ -137,6 +152,9 @@ if (response.statusCode == 200) {
 
 ```json
 {
-    "error": "State not found."
+    "data": {},
+    "statusCode": 404,
+    "message": "State not found.",
+    "status": "error"
 }
 ```

@@ -1,31 +1,73 @@
 {
-  "hash": "79069067",
+  "hash": "7575fb94",
   "configHash": "de208d61",
-  "lockfileHash": "9e5ed428",
-  "browserHash": "ea965fa9",
+  "lockfileHash": "1bb56a2b",
+  "browserHash": "badc7c35",
   "optimized": {
     "vue": {
       "src": "../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "5302bce2",
+      "fileHash": "a4e53b8b",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../node_modules/vitepress/node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "4f1b3f10",
+      "fileHash": "9e7a21dc",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
       "src": "../../../node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "bc063e55",
+      "fileHash": "873ad690",
       "needsInterop": false
     },
     "pinia": {
       "src": "../../../node_modules/pinia/dist/pinia.mjs",
       "file": "pinia.js",
-      "fileHash": "8e0ae7c1",
+      "fileHash": "34029e49",
+      "needsInterop": false
+    },
+    "pinia-plugin-persistedstate": {
+      "src": "../../../node_modules/pinia-plugin-persistedstate/dist/index.mjs",
+      "file": "pinia-plugin-persistedstate.js",
+      "fileHash": "16eada8e",
+      "needsInterop": false
+    },
+    "alova/client": {
+      "src": "../../../node_modules/alova/dist/clienthook/index.esm.js",
+      "file": "alova_client.js",
+      "fileHash": "d8dba910",
+      "needsInterop": false
+    },
+    "alova/vue": {
+      "src": "../../../node_modules/alova/dist/stateshook/vue.esm.js",
+      "file": "alova_vue.js",
+      "fileHash": "09c3a931",
+      "needsInterop": false
+    },
+    "alova": {
+      "src": "../../../node_modules/alova/dist/alova.esm.js",
+      "file": "alova.js",
+      "fileHash": "45de522b",
+      "needsInterop": false
+    },
+    "alova/fetch": {
+      "src": "../../../node_modules/alova/dist/adapter/fetch.esm.js",
+      "file": "alova_fetch.js",
+      "fileHash": "64e325e7",
+      "needsInterop": false
+    },
+    "sweetalert": {
+      "src": "../../../node_modules/sweetalert/dist/sweetalert.min.js",
+      "file": "sweetalert.js",
+      "fileHash": "faa38429",
+      "needsInterop": true
+    },
+    "simple-notify": {
+      "src": "../../../node_modules/simple-notify/dist/simple-notify.mjs",
+      "file": "simple-notify.js",
+      "fileHash": "01ec2712",
       "needsInterop": false
     }
   },
@@ -35,6 +77,15 @@
     },
     "chunk-ZXJI2PUM": {
       "file": "chunk-ZXJI2PUM.js"
+    },
+    "chunk-SG45UXVD": {
+      "file": "chunk-SG45UXVD.js"
+    },
+    "chunk-IQORDQIB": {
+      "file": "chunk-IQORDQIB.js"
+    },
+    "chunk-BUSYA2B4": {
+      "file": "chunk-BUSYA2B4.js"
     }
   }
 }

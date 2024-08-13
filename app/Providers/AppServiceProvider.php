@@ -2,11 +2,17 @@
 
 namespace App\Providers;
 
+use App\Models\City;
+use App\Models\Lga;
+use App\Models\State;
+use App\Models\Unit;
+use App\Models\Ward;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Event;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
+    public function boot(Request $request): void
     {
         \App\Helpers\Providers::buildResponseMacros();
 

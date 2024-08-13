@@ -27,7 +27,7 @@ class PaymentTest extends TestCase
         $user = TempUser::factory()->create();
 
         $pay = $this->payWith('paystack')->makePayment($request, $user, 1000);
-        $this->assertEquals(HttpStatus::OK, $pay['status_code'] ?? null);
+        $this->assertEquals(HttpStatus::OK, $pay['statusCode'] ?? null);
     }
 
     public function testUserCanInitializePayment(): void
@@ -36,7 +36,7 @@ class PaymentTest extends TestCase
         $user = User::factory()->create();
 
         $pay = $this->payWith('paystack')->makePayment($request, $user, 1000);
-        $this->assertEquals(HttpStatus::OK, $pay['status_code'] ?? null);
+        $this->assertEquals(HttpStatus::OK, $pay['statusCode'] ?? null);
     }
 
     public function testUserCanInitializeAndVerifyPayment(): void
@@ -46,7 +46,7 @@ class PaymentTest extends TestCase
 
         $pay = $this->payWith('paystack')->makePayment($request, $user, 1000);
         $verify = $this->payWith('paystack')->verifyPayment($request, $user, $pay['reference'] ?? null);
-        $this->assertEquals(HttpStatus::OK, $verify['status_code'] ?? null);
+        $this->assertEquals(HttpStatus::OK, $verify['statusCode'] ?? null);
     }
 
     public function testTempUserCanInitializeAndVerifyPayment(): void
@@ -56,6 +56,6 @@ class PaymentTest extends TestCase
 
         $pay = $this->payWith('paystack')->makePayment($request, $user, 1000);
         $verify = $this->payWith('paystack')->verifyPayment($request, $user, $pay['reference'] ?? null);
-        $this->assertEquals(HttpStatus::OK, $verify['status_code'] ?? null);
+        $this->assertEquals(HttpStatus::OK, $verify['statusCode'] ?? null);
     }
 }
