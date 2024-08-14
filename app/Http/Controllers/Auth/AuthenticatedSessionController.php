@@ -102,13 +102,17 @@ class AuthenticatedSessionController extends Controller
             'last_seen' => now(),
         ]);
 
-        $request->user('sanctum')->currentAccessToken()->delete();
 
-        if (! $request->isXmlHttpRequest()) {
+        if ($request->isXmlHttpRequest()) {
+            $tokenId = $request->user()->currentAccessToken()->id;
+            $request->user()->tokens()->where('id', $tokenId)->delete();
+        } else {
+            $request->user()->currentAccessToken()->delete();
             session()->flush();
 
             return response()->redirectToRoute('web.login');
         }
+
 
         return PV::response()->success([
             'message' => 'You have been successfully logged out',
