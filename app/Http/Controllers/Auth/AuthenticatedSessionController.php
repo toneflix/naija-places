@@ -22,8 +22,7 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request)
     {
         try {
-            $request->authenticate();
-            $user = $request->user();
+            $user = $request->authenticate() ?: $request->user();
 
             return $this->setUserData($request, $user);
         } catch (\Illuminate\Validation\ValidationException $e) {
@@ -103,7 +102,7 @@ class AuthenticatedSessionController extends Controller
             'last_seen' => now(),
         ]);
 
-        $request->user()->currentAccessToken()->delete();
+        $request->user('sanctum')->currentAccessToken()->delete();
 
         if (! $request->isXmlHttpRequest()) {
             session()->flush();
