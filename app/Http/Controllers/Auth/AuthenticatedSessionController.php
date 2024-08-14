@@ -10,6 +10,7 @@ use App\Http\Resources\UserResource;
 use App\Models\User;
 use DeviceDetector\DeviceDetector;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Broadcast;
 
 class AuthenticatedSessionController extends Controller
@@ -103,12 +104,13 @@ class AuthenticatedSessionController extends Controller
         ]);
 
 
-        if ($request->isXmlHttpRequest()) {
-            $tokenId = $request->user()->currentAccessToken()->id;
-            $request->user()->tokens()->where('id', $tokenId)->delete();
-        } else {
+        if ($request->isXmlHttpRequest() || $request->is('api/*')) {
             $request->user()->currentAccessToken()->delete();
-            session()->flush();
+        } else {
+            Auth::logout();
+            $request->session()->invalidate();
+
+            $request->session()->regenerateToken();
 
             return response()->redirectToRoute('web.login');
         }
