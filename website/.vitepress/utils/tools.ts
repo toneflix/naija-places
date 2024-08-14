@@ -1,13 +1,12 @@
-import Notify from "simple-notify";
+import notifyAio from 'notiflix/build/notiflix-notify-aio.js';
 import swal from "sweetalert";
+const { Notify } = notifyAio;
 
-export const notify = (text: string) => {
-    new Notify({
-        text,
-        position: "bottom left",
-        showCloseButton: false,
-        showIcon: false,
-    });
+export const notify = (text: string, type: 'info' | 'failure' | 'warning' | 'success' = 'success') => {
+    Notify[type](text, undefined, {
+        useIcon: false,
+        position: 'left-bottom',
+    })
 }
 
 export const confirm = (text: string, title: string = 'Confirm', buttons?: (boolean | string)[]) => {

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->ipAddress();
             $table->nullableMorphs('model');
+            $table->string('endpoint')->nullable();
             $table->foreignId('api_key_id')->nullable()->constrained('api_keys')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });

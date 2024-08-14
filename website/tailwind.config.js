@@ -4,7 +4,8 @@ module.exports = {
     darkMode: 'selector',
     content: [
         "./.vitepress/**/*.vue",
-        "./**/*.md",
+        "./docs/*.md",
+        "/*.md",
     ],
     theme: {
         extend: {

@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
 
         $adminEmail = env('CI_ADMIN_EMAIL', 'admin@example.com');
 
-        if (!File::exists(database_path('database.sqlite'))) {
+        if (!File::exists(database_path('database.sqlite')) && config('database.default') === 'sqlite') {
             File::put(database_path('database.sqlite'), '');
             \Artisan::call('migrate');
         }

@@ -13,7 +13,7 @@
         }"
     >
         <slot name="icon" :loading="loading">
-            <i class="text-current" :class="icon" v-if="!loading" />
+            <i class="text-white" :class="icon" v-if="!loading" />
         </slot>
         <slot name="loading" :loading="loading">
             <CSpinner v-if="loading" />

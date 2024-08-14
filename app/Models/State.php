@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
  * @property Collection<int, Lga> $lgas
@@ -70,5 +71,10 @@ class State extends Model
     public function cities(): HasMany
     {
         return $this->hasMany(City::class);
+    }
+
+    public function logs(): MorphMany
+    {
+        return $this->morphMany(Log::class, 'model');
     }
 }

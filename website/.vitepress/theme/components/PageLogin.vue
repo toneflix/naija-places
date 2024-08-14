@@ -1,11 +1,13 @@
 <template>
     <div class="flex flex-col justify-center min-h-full py-12 sm:px-6 lg:px-8">
         <div class="sm:mx-auto sm:w-full sm:max-w-md">
-            <img
-                class="w-auto h-20 mx-auto"
-                :src="site.themeConfig.logo"
-                alt="Logo"
-            />
+            <a href="/">
+                <img
+                    class="w-auto h-20 mx-auto"
+                    :src="site.themeConfig.logo"
+                    alt="Logo"
+                />
+            </a>
             <h2
                 class="mt-6 text-3xl font-extrabold text-center text-gray-900 dark:text-white"
             >
@@ -14,7 +16,7 @@
             <p class="mt-2 text-sm text-center text-gray-600 dark:text-white">
                 Or
                 <a
-                    href="/portal/register.html"
+                    href="/portal/register"
                     class="font-medium text-primary hover:text-green-800 dark:text-gray-300 dark:hover:text-gray-100"
                 >
                     create a new account
@@ -82,7 +84,7 @@
 
                         <div class="text-sm">
                             <a
-                                href="/portal/reset-password.html"
+                                href="/portal/reset-password"
                                 class="font-medium text-primary hover:text-primary"
                             >
                                 Forgot your password?
@@ -109,6 +111,7 @@ import { alova } from "../../utils/alova";
 import { useData, useRouter } from "vitepress";
 import { computed } from "vue";
 import { bootstrapStore } from "../../store/bootstrap";
+import { notify } from "../../utils/tools";
 
 const router = useRouter();
 const errors = computed(() => (<any>error.value)?.errors);
@@ -131,8 +134,12 @@ const { send, form, error, loading } = useForm(
             password: "",
         },
     }
-).onSuccess(() => {
-    router.go("/portal/home");
-});
+)
+    .onSuccess(() => {
+        router.go("/portal/home");
+    })
+    .onError(({ error }) => {
+        notify(error.message, "failure");
+    });
 const { site } = useData();
 </script>

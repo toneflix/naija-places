@@ -6,7 +6,7 @@ import { createPinia } from "pinia";
 import { createPersistedState } from 'pinia-plugin-persistedstate'
 import './style.css'
 import './css/custom.css'
-import 'simple-notify/dist/simple-notify.css'
+import 'notiflix/dist/notiflix-3.2.7.min.css'
 
 export default {
     extends: DefaultTheme,

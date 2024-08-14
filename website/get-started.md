@@ -8,7 +8,7 @@ To start using the Naija Places API, you’ll need to generate an API key. Follo
 
 ## Step 1: Register or Log In
 
-1. Visit the Naija Places API [Portal](portal).
+1. Visit the Naija Places API [Portal](portal/home).
 2. Register for an account if you don’t have one. Provide the necessary details and verify your email address.
 3. If you already have an account, simply log in using your credentials.
 
@@ -26,13 +26,7 @@ To start using the Naija Places API, you’ll need to generate an API key. Follo
 With your API key, you can now begin making requests to the Naija Places API. Include the key in your request headers as follows:
 
 ```http
-Authorization: Bearer YOUR_API_KEY
+X-Api-Key: YOUR_API_KEY
 ```
 
 You’re all set! Check out the [API Documentation](api-documentation) for detailed instructions on how to use the API endpoints.
-
-<SimpleComp />
-
-<script setup>
-import SimpleComp from './components/SimpleComp.vue'
-</script>

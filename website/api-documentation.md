@@ -34,7 +34,7 @@ const options = {
     redirect: "follow",
 };
 
-headers.append("X-Api-key", "API_KEY");
+headers.append("X-Api-Key", "API_KEY");
 
 fetch("https://naija-places.toneflix.ng/v1/states", options)
     .then((response) => response.json())
@@ -50,7 +50,7 @@ const options = {
     redirect: "follow",
 };
 
-headers.append("X-Api-key", "API_KEY");
+headers.append("X-Api-Key", "API_KEY");
 
 fetch("https://naija-places.toneflix.ng/v1/states/1/cities", options)
     .then((response) => response.json())
@@ -66,7 +66,7 @@ const options = {
     redirect: "follow",
 };
 
-headers.append("X-Api-key", "API_KEY");
+headers.append("X-Api-Key", "API_KEY");
 
 fetch("https://naija-places.toneflix.ng/v1/states/1/lgas", options)
     .then((response) => response.json())
@@ -82,7 +82,7 @@ const options = {
     redirect: "follow",
 };
 
-headers.append("X-Api-key", "API_KEY");
+headers.append("X-Api-Key", "API_KEY");
 
 fetch("https://naija-places.toneflix.ng/v1/states/1/lgas/3/wards", options)
     .then((response) => response.json())
@@ -98,7 +98,7 @@ const options = {
     redirect: "follow",
 };
 
-headers.append("X-Api-key", "API_KEY");
+headers.append("X-Api-Key", "API_KEY");
 
 fetch(
     "https://naija-places.toneflix.ng/v1/states/1/lgas/3/wards/1/units",

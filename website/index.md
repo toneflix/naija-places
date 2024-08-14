@@ -10,11 +10,11 @@ hero:
         alt: Banner
     actions:
         - theme: brand
-          text: Get Started
-          link: /get-started
+          text: Portal
+          link: /portal/home
         - theme: alt
           text: API Documentation
-          link: /api-documentation
+          link: /get-started
 
 features:
     - title: Extensive Coverage

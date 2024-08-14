@@ -52,9 +52,10 @@ return Application::configure(basePath: dirname(__DIR__))
                 Request::HEADER_X_FORWARDED_AWS_ELB
         );
 
-        $middleware->web(prepend: [
-            \App\Http\Middleware\EncryptCookies::class,
-            \App\Http\Middleware\VerifyCsrfToken::class,
+        $middleware->validateCsrfTokens(except: [
+            'api/*',
+            'api.*',
+            'portal/*',
         ]);
 
         $middleware->api(append: [

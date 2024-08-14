@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Unit extends Model
 {
@@ -31,6 +32,11 @@ class Unit extends Model
     public function lga(): BelongsTo
     {
         return $this->belongsTo(Lga::class);
+    }
+
+    public function logs(): MorphMany
+    {
+        return $this->morphMany(Log::class, 'model');
     }
 
     /**

@@ -14,6 +14,8 @@ Route::prefix('v1')->group(function () {
     }
 
     Route::get('/', function (Request $request) {
+        // \Artisan::call('app:set-config freemium_domains "[\"pci-ngvms.org.ng\", \"niconpay.com\"]"');
+        // dd(\Artisan::output());
         return [
             'api' => config('app.name'),
             'version' => '1.0.1'

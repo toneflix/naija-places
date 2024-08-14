@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use App\Helpers\Providers;
 use App\Models\ApiKey;
+use App\Models\Log;
 use Closure;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
@@ -31,11 +32,11 @@ class ApiAccessMiddleware
             }
         }
 
-        if (!$request->hasHeader('X-Api-key')) {
+        if (!$request->hasHeader('X-Api-Key')) {
             throw new AuthenticationException('Unauthorized. You do not have access to this resource.');
         };
 
-        $key = ApiKey::where('key', $request->header('X-Api-key'))->first();
+        $key = ApiKey::where('key', $request->header('X-Api-Key'))->first();
 
         if (!$key) {
             throw new AuthenticationException('Unauthorized. Invalid API key.');
@@ -55,6 +56,18 @@ class ApiAccessMiddleware
             }
 
             RateLimiter::hit('api-access:' . $key->id);
+        }
+
+        $log = [
+            'endpoint' => parse_url($request->url(), PHP_URL_PATH),
+            'ip_address' => $request->ip(),
+            'api_key_id' => $key->id,
+        ];
+
+        if ($request->route()->parameters) {
+            collect($request->route()->parameters)->last()->logs()->create($log);
+        } else {
+            Log::create($log);
         }
 
         return $response;

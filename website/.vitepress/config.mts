@@ -13,6 +13,8 @@ export default defineConfig({
         }],
     ],
     title: "Naija Places API",
+    cleanUrls: true,
+    assetsDir: 'doc-assets',
     description: "One api to rule them all, query all states, Local government areas, Wards, Polling Units and Towns in Nigeria.",
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config

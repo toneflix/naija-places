@@ -11,7 +11,7 @@ outline: deep
 This endpoint uses the API KEY as a bearer token for authentication.
 
 ```
-Name: X-Api-key: API_KEY
+Name: X-Api-Key: API_KEY
 In: header
 ```
 
@@ -42,7 +42,7 @@ const options = {
     redirect: "follow",
 };
 
-headers.append("X-Api-key", "API_KEY");
+headers.append("X-Api-Key", "API_KEY");
 
 fetch("https://naija-places.toneflix.ng/v1/states/ab/lgas", options)
     .then((response) => response.json())
@@ -57,7 +57,7 @@ curl_setopt_array($curl, array(
   CURLOPT_URL => 'https://naija-places.toneflix.ng/v1/states/ab/lgas',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_HTTPHEADER => array(
-    'Authorization: Bearer API_KEY'
+    'X-Api-Key: API_KEY'
   ),
 ));
 
@@ -73,7 +73,7 @@ import axios from "axios";
 axios
     .get("https://naija-places.toneflix.ng/v1/states/ab/lgas", {
         headers: {
-            Authorization: "Bearer API_KEY",
+            X-Api-Key: "API_KEY",
         },
     })
     .then(({ data }) => {
@@ -86,7 +86,7 @@ axios
 
 ```dart [dart]
 var headers = {
-  'Authorization': 'Bearer API_KEY'
+  'X-Api-Key': 'API_KEY'
 };
 
 var request = http.Request('GET', Uri.parse('https://naija-places.toneflix.ng/v1/states/ab/lgas'));
@@ -104,28 +104,41 @@ if (response.statusCode == 200) {
 
 :::
 
-### Success Response
+### 200 Success Response
 
 ```json
-[
-    {
-        "id": 1,
-        "slug": "aba-north",
-        "name": "Aba North",
-        "code": "EZA",
-        "state": "abia",
-        "stateId": 1
-    },
-    {
-        "id": 2,
-        "slug": "ohafia",
-        "name": "Ohafia",
-        "code": "HAF",
-        "state": "abia",
-        "stateId": 1
-    },
-    ...
-]
+{
+    "data": [
+        {
+            "id": 251,
+            "slug": "aninri",
+            "name": "Aninri",
+            "code": "DBR",
+            "state": "Enugu",
+            "stateId": 14
+        },
+        {
+            "id": 252,
+            "slug": "awgu",
+            "name": "Awgu",
+            "code": "AWG",
+            "state": "Enugu",
+            "stateId": 14
+        },
+        {
+            "id": 253,
+            "slug": "enugu-east",
+            "name": "Enugu East",
+            "code": "NKW",
+            "state": "Enugu",
+            "stateId": 14
+        },
+        ...
+    ],
+    "status": "success",
+    "message": "Data Fetched.",
+    "statusCode": 200
+}
 ```
 
 ### 401 Error Response

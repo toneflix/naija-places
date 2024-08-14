@@ -11,7 +11,7 @@ outline: deep
 This endpoint uses the API KEY as a bearer token for authentication.
 
 ```
-X-Api-key: API_KEY
+X-Api-Key: API_KEY
 In: header
 ```
 
@@ -42,7 +42,7 @@ const options = {
     redirect: "follow",
 };
 
-headers.append("X-Api-key", "API_KEY");
+headers.append("X-Api-Key", "API_KEY");
 
 fetch("https://naija-places.toneflix.ng/v1/states/ab/cities", options)
     .then((response) => response.json())
@@ -57,7 +57,7 @@ curl_setopt_array($curl, array(
   CURLOPT_URL => 'https://naija-places.toneflix.ng/v1/states/ab/cities',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_HTTPHEADER => array(
-    'Authorization: Bearer API_KEY'
+    'X-Api-Key: API_KEY'
   ),
 ));
 
@@ -73,7 +73,7 @@ import axios from "axios";
 axios
     .get("https://naija-places.toneflix.ng/v1/states/ab/cities", {
         headers: {
-            Authorization: "Bearer API_KEY",
+            X-Api-Key: "API_KEY",
         },
     })
     .then(({ data }) => {
@@ -86,7 +86,7 @@ axios
 
 ```dart [dart]
 var headers = {
-  'Authorization': 'Bearer API_KEY'
+  'X-Api-Key': 'API_KEY'
 };
 
 var request = http.Request('GET', Uri.parse('https://naija-places.toneflix.ng/v1/states/ab/cities'));
@@ -104,26 +104,38 @@ if (response.statusCode == 200) {
 
 :::
 
-### Success Response
+### 200 Success Response
 
 ```json
-[
-    {
-        "id": 1,
-        "slug": "aba",
-        "name": "Aba",
-        "state": "abia",
-        "stateId": 1
-    },
-    {
-        "id": 2,
-        "slug": "abala",
-        "name": "Abala",
-        "state": "abia",
-        "stateId": 1
-    },
-    ...
-]
+{
+    "data": [
+        {
+            "id": 580,
+            "slug": "abakpa-nike",
+            "name": "Abakpa Nike",
+            "state": "Enugu",
+            "stateId": 14
+        },
+        {
+            "id": 581,
+            "slug": "achi",
+            "name": "Achi",
+            "state": "Enugu",
+            "stateId": 14
+        },
+        {
+            "id": 582,
+            "slug": "agbani-road",
+            "name": "Agbani Road",
+            "state": "Enugu",
+            "stateId": 14
+        },
+        ...
+    ],
+    "status": "success",
+    "message": "Data Fetched.",
+    "statusCode": 200
+}
 ```
 
 ### 401 Error Response

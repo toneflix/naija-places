@@ -1,6 +1,9 @@
 /.phpunit.cache
 /node_modules
+/**/*/dist
 /**/*/.yarn
+/**/*/.dist
+/website/.vitepress/cache
 /**/*/node_modules
 /public/build
 /public/hot

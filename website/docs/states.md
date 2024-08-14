@@ -11,7 +11,7 @@ outline: deep
 This endpoint uses the API KEY as a bearer token for authentication.
 
 ```
-X-Api-key: API_KEY
+X-Api-Key: API_KEY
 In: header
 ```
 
@@ -39,7 +39,7 @@ const options = {
     redirect: "follow",
 };
 
-headers.append("X-Api-key", "API_KEY");
+headers.append("X-Api-Key", "API_KEY");
 
 fetch("https://naija-places.toneflix.ng/v1/states", options)
     .then((response) => response.json())
@@ -54,7 +54,7 @@ curl_setopt_array($curl, array(
   CURLOPT_URL => 'https://naija-places.toneflix.ng/v1/states',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_HTTPHEADER => array(
-    'Authorization: Bearer API_KEY'
+    'X-Api-Key: API_KEY'
   ),
 ));
 
@@ -70,7 +70,7 @@ import axios from "axios";
 axios
     .get("https://naija-places.toneflix.ng/v1/states", {
         headers: {
-            Authorization: "Bearer API_KEY",
+            X-Api-Key: "API_KEY",
         },
     })
     .then(({ data }) => {
@@ -83,7 +83,7 @@ axios
 
 ```dart [dart]
 var headers = {
-  'Authorization': 'Bearer API_KEY'
+  'X-Api-Key': 'API_KEY'
 };
 
 var request = http.Request('GET', Uri.parse('https://naija-places.toneflix.ng/v1/states'));
@@ -101,7 +101,7 @@ if (response.statusCode == 200) {
 
 :::
 
-### Success Response
+### 200 Success Response
 
 ```json
 {

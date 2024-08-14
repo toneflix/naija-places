@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Ward extends Model
 {
@@ -32,6 +33,11 @@ class Ward extends Model
     public function lga(): BelongsTo
     {
         return $this->belongsTo(Lga::class);
+    }
+
+    public function logs(): MorphMany
+    {
+        return $this->morphMany(Log::class, 'model');
     }
 
     /**

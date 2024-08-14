@@ -58,7 +58,7 @@
                                         <CButton
                                             dense
                                             type="button"
-                                            class="px-1.5 py-1 bg-red-600 hover:bg-red-700 focus:ring-red-500"
+                                            class="px-1.5 py-1 text-white bg-red-600 hover:bg-red-700 focus:ring-red-500"
                                             :loading="deleting === key.id"
                                             @click="deleteIt(key.id)"
                                         >

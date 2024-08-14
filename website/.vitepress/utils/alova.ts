@@ -62,13 +62,19 @@ const { onAuthRequired, onResponseRefreshToken } = createClientTokenAuthenticati
         })
     },
     async logout () {
-        await bootstrapStore().clearAuth()
+        const boot = bootstrapStore();
+        bootstrapStore().clearAuth().then(() => {
+            boot.setRedirect('portal/login')
+        })
     },
 });
 
+const baseURL = import.meta.env.DEV
+    ? import.meta.env.VITE_BASEURL_DEV
+    : import.meta.env.VITE_BASEURL
 
 export const alova = createAlova({
-    baseURL: import.meta.env.VITE_BASEURL,
+    baseURL,
     statesHook: VueHook,
     responded: onResponseRefreshToken(responded) as any,
     requestAdapter: fetchAdapter(),

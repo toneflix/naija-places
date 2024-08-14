@@ -52,7 +52,7 @@ class RegisteredUserController extends Controller
     public function createUser(Request $request)
     {
         $firstname = str($request->get('name'))->explode(' ')->first(null, $request->firstname);
-        $lastname = str($request->get('name'))->explode(' ')->last(fn ($n) => $n !== $firstname, $request->lastname);
+        $lastname = str($request->get('name'))->explode(' ')->last(fn($n) => $n !== $firstname, $request->lastname);
 
         $user = User::create([
             'role' => 'user',
@@ -76,7 +76,7 @@ class RegisteredUserController extends Controller
         $dev = new DeviceDetector($request->userAgent());
 
         $device = $dev->getBrandName()
-            ? ($dev->getBrandName().$dev->getDeviceName())
+            ? ($dev->getBrandName() . $dev->getDeviceName())
             : $request->userAgent();
 
         $user->save();

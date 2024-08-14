@@ -1,11 +1,13 @@
 <template>
     <div class="flex flex-col justify-center min-h-full py-12 sm:px-6 lg:px-8">
         <div class="sm:mx-auto sm:w-full sm:max-w-md">
-            <img
-                class="w-auto h-20 mx-auto"
-                :src="site.themeConfig.logo"
-                alt="Logo"
-            />
+            <a href="/">
+                <img
+                    class="w-auto h-20 mx-auto"
+                    :src="site.themeConfig.logo"
+                    alt="Logo"
+                />
+            </a>
             <h2
                 class="mt-6 text-3xl font-extrabold text-center text-gray-900 dark:text-white"
             >
@@ -139,7 +141,7 @@
 
                         <div class="text-sm">
                             <a
-                                href="/portal/login.html"
+                                href="/portal/login"
                                 class="font-medium text-primary hover:text-primary"
                             >
                                 Login Instead
@@ -157,7 +159,7 @@
                         />
                         <CButton
                             v-else
-                            href="/portal/login.html"
+                            href="/portal/login"
                             class="w-full text-white focus:ring-primary bg-primary hover:bg-green-800"
                         >
                             Continue to login
@@ -174,6 +176,7 @@ import { alova } from "../../utils/alova";
 import { useData, useRouter } from "vitepress";
 import { computed, ref } from "vue";
 import { bootstrapStore, User } from "../../store/bootstrap";
+import { notify } from "../../utils/tools";
 
 const step = ref(1);
 const router = useRouter();
@@ -204,19 +207,23 @@ const { send, form, error, data, reset, loading } = useForm(
             password_confirmation: null,
         },
     }
-).onSuccess(() => {
-    if (step.value === 3) {
-        // router.go("/portal/login");
-        step.value = 4;
-        reset();
-    } else if (step.value === 2) {
-        step.value = 3;
-    } else if (step.value === 1) {
-        step.value = 2;
-    } else {
-        step.value = 1;
-    }
-});
+)
+    .onSuccess(() => {
+        if (step.value === 3) {
+            // router.go("/portal/login");
+            step.value = 4;
+            reset();
+        } else if (step.value === 2) {
+            step.value = 3;
+        } else if (step.value === 1) {
+            step.value = 2;
+        } else {
+            step.value = 1;
+        }
+    })
+    .onError(({ error }) => {
+        notify(error.message, "failure");
+    });
 
 const { site } = useData();
 </script>

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class City extends Model
 {
@@ -21,6 +22,11 @@ class City extends Model
         return $this->where('id', $value)
             ->orWhere('slug', $value)
             ->firstOrFail();
+    }
+
+    public function logs(): MorphMany
+    {
+        return $this->morphMany(Log::class, 'model');
     }
 
     /**
