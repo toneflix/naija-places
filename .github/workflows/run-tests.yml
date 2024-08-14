@@ -67,6 +67,7 @@ jobs:
           php artisan db:seed
         env:
           CI_ADMIN_EMAIL: admin@example.com
+          CI_TRUNCATE_TABLES: true
 
       - name: Execute tests
         run: composer run-test
