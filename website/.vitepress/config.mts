@@ -39,7 +39,7 @@ export default defineConfig({
         ],
 
         socialLinks: [
-            { icon: 'github', link: 'https://github.com/toneflix/naijaplaces' }
+            { icon: 'github', link: 'https://github.com/toneflix/naija-places' }
         ],
         footer: {
             message: 'Released under the MIT License.',
