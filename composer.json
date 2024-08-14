@@ -2,6 +2,7 @@
     "name": "toneflix-code/laravel-op",
     "type": "project",
     "description": "Laravel OP is a simple fork of Laravel that provides a set of tools to help you build your Laravel application faster and easier. It is a collection of useful classes, traits, and functions that I have found useful in my own projects. It is a work in progress and I will be adding more features as I need them. I hope you find it useful too.",
+    "homepage": "https://naija-places.niconpay.com/",
     "keywords": [
         "framework",
         "laravel",
