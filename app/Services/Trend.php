@@ -43,7 +43,7 @@ class Trend
 
             return [
                 'month' => Carbon::createFromFormat('Y-m', $month)->format('F Y'),
-                'usageRate' => round($log ? ($log->user_logs / $log->total_logs) * 100 : 0, 2),
+                'usageRate' => round($log ? ($log->user_logs / ($log->total_logs ?: 1)) * 100 : 0, 2),
             ];
         });
     }

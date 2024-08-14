@@ -31,7 +31,7 @@ class DashboardController extends Controller
             now(),
         ])->count();
 
-        $usageRate = (Log::whereHas('apiKey', $userScope)->count() / Log::count()) * 100;
+        $usageRate = (Log::whereHas('apiKey', $userScope)->count() / (Log::count() ?: 1)) * 100;
 
 
         return Providers::response()->success([
