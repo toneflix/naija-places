@@ -29,7 +29,7 @@ class ApiTest extends TestCase
     public function testCanLoadStates(): void
     {
         $response = $this->get('/api/v1/states/', [
-            'Referer' => 'https://naija-places.niconpay.com/tests'
+            'Referer' => 'https://naija-places.toneflix.com.ng/tests'
         ]);
         $response->assertOk();
         $this->assertSame(
@@ -43,7 +43,7 @@ class ApiTest extends TestCase
         $state = State::first();
 
         $response = $this->get("/api/v1/states/{$state->id}/lgas", [
-            'Referer' => 'https://naija-places.niconpay.com/tests'
+            'Referer' => 'https://naija-places.toneflix.com.ng/tests'
         ]);
         $response->assertOk();
         $this->assertSame(
@@ -58,7 +58,7 @@ class ApiTest extends TestCase
         $lga = $state->lgas()->first();
 
         $response = $this->get("/api/v1/states/{$state->id}/lgas/{$lga->id}/wards", [
-            'Referer' => 'https://naija-places.niconpay.com/tests'
+            'Referer' => 'https://naija-places.toneflix.com.ng/tests'
         ]);
         $response->assertOk();
         $this->assertSame(
@@ -74,7 +74,7 @@ class ApiTest extends TestCase
         $ward = $lga->wards()->first();
 
         $response = $this->get("/api/v1/states/{$state->id}/lgas/{$lga->id}/wards/{$ward->id}/units", [
-            'Referer' => 'https://naija-places.niconpay.com/tests'
+            'Referer' => 'https://naija-places.toneflix.com.ng/tests'
         ]);
         $response->assertOk();
         $this->assertSame(
@@ -88,7 +88,7 @@ class ApiTest extends TestCase
         $state = State::first()->id;
 
         $response = $this->get("/api/v1/states/{$state}/cities", [
-            'Referer' => 'https://naija-places.niconpay.com/tests'
+            'Referer' => 'https://naija-places.toneflix.com.ng/tests'
         ]);
         $response->assertOk();
     }
