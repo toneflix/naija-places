@@ -11,6 +11,7 @@
 /storage/*.key
 /vendor
 .env
+Archive.zip
 .DS_Store
 .env.backup
 .env.production
