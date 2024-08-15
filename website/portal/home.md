@@ -3,7 +3,7 @@ layout: false
 ---
 
 <ClientOnly>
-    <LayoutDashboard>
+    <LayoutDashboard page-title="Dashboard">
         <PageDashboard />
     </LayoutDashboard>
 </ClientOnly>

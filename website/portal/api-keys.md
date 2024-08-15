@@ -3,7 +3,7 @@ layout: false
 ---
 
 <ClientOnly>
-    <LayoutDashboard>
+    <LayoutDashboard page-title="Api Keys">
         <PageApiKeys />
     </LayoutDashboard>
 </ClientOnly>
