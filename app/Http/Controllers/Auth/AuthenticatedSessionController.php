@@ -115,7 +115,6 @@ class AuthenticatedSessionController extends Controller
             return response()->redirectToRoute('web.login');
         }
 
-
         return PV::response()->success([
             'message' => 'You have been successfully logged out',
         ], HttpStatus::OK);

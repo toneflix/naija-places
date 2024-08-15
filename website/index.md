@@ -13,6 +13,9 @@ hero:
           text: Portal
           link: /portal/home
         - theme: alt
+          text: Demo
+          link: /demo
+        - theme: alt
           text: API Documentation
           link: /get-started
 
