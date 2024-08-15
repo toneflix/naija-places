@@ -87,9 +87,10 @@ onSuccess(({ data }) => {
 });
 
 watch(modelValue, (id) => {
+    const place = places.value.find((e) => e.id === id);
     emit(
         "change",
-        places.value.find((e) => e.id === id)
+        Object.assign({}, place, { code: (place?.code || "").toLowerCase() })
     );
 });
 </script>

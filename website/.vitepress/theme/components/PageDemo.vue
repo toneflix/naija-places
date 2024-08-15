@@ -11,7 +11,7 @@
                     class="border-solid dark:border-black"
                     :params="{ states: true }"
                     v-model="form.state"
-                    @change="data.state = $event.name"
+                    @change="data.state = $event"
                 />
                 <small>
                     <code>{{ `${baseURL}/states` }}</code>
@@ -29,11 +29,13 @@
                             class="border-solid dark:border-black"
                             :params="{ states: form.state, lgas: true }"
                             v-model="form.lga"
-                            @change="data.lga = $event.name"
+                            @change="data.lga = $event"
                         />
                         <small>
                             <code>{{
-                                `${baseURL}/states/${form.state}/cities`
+                                `${baseURL}/states/${
+                                    data.state?.code || form.state
+                                }/cities`
                             }}</code>
                         </small>
                     </div>
@@ -48,11 +50,13 @@
                             class="border-solid dark:border-black"
                             :params="{ states: form.state, cities: true }"
                             v-model="form.city"
-                            @change="data.city = $event.name"
+                            @change="data.city = $event"
                         />
                         <small>
                             <code>{{
-                                `${baseURL}/states/${form.state}/lgas`
+                                `${baseURL}/states/${
+                                    data.state?.code || form.state
+                                }/lgas`
                             }}</code>
                         </small>
                     </div>
@@ -72,11 +76,13 @@
                         wards: true,
                     }"
                     v-model="form.ward"
-                    @change="data.ward = $event.name"
+                    @change="data.ward = $event"
                 />
                 <small>
                     <code>{{
-                        `${baseURL}/states/${form.state}/lgas/${form.lga}/wards`
+                        `${baseURL}/states/${
+                            data.state?.code || form.state
+                        }/lgas/${data.lga?.code || form.lga}/wards`
                     }}</code>
                 </small>
             </div>
@@ -95,11 +101,15 @@
                         units: true,
                     }"
                     v-model="form.unit"
-                    @change="data.unit = $event.name"
+                    @change="data.unit = $event"
                 />
                 <small class="break-words">
                     <code class="min-w-0">{{
-                        `${baseURL}/states/${form.state}/lgas/${form.lga}/wards/${form.ward}/units`
+                        `${baseURL}/states/${
+                            data.state?.code || form.state
+                        }/lgas/${data.lga?.code || form.lga}/wards/${
+                            form.ward
+                        }/units`
                     }}</code>
                 </small>
             </div>
@@ -130,8 +140,18 @@ const form = ref({
 
 const data = ref({});
 
-const parse = (data: Record<string, string>) => {
-    return JSON.stringify(data, null, 4)
+const parse = (data: Record<string, any>) => {
+    return JSON.stringify(
+        {
+            state: data.state?.name || "loading...",
+            city: data.city?.name || "loading...",
+            lga: data.lga?.name || "loading...",
+            ward: data.ward?.name || "loading...",
+            unit: data.unit?.name || "loading...",
+        },
+        null,
+        4
+    )
         .split("\n")
         .map((line) => `<span class="line">${line}</span>`)
         .join("\n");
