@@ -45,7 +45,10 @@ const options = {
 
 headers.append("X-Api-Key", "API_KEY");
 
-fetch("https://naija-places.toneflix.ng/v1/states/ab/lgas/mba/wards", options)
+fetch(
+    "https://naija-places.toneflix.com.ng/v1/states/ab/lgas/mba/wards",
+    options
+)
     .then((response) => response.json())
     .then((result) => console.log(result))
     .catch((error) => console.log("error", error));
@@ -55,7 +58,7 @@ fetch("https://naija-places.toneflix.ng/v1/states/ab/lgas/mba/wards", options)
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://naija-places.toneflix.ng/v1/states/ab/lgas/mba/wards',
+  CURLOPT_URL => 'https://naija-places.toneflix.com.ng/v1/states/ab/lgas/mba/wards',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_HTTPHEADER => array(
     'X-Api-Key: API_KEY'
@@ -72,7 +75,7 @@ echo $response;
 import axios from "axios";
 
 axios
-    .get("https://naija-places.toneflix.ng/v1/states/ab/lgas/mba/wards", {
+    .get("https://naija-places.toneflix.com.ng/v1/states/ab/lgas/mba/wards", {
         headers: {
             X-Api-Key: "API_KEY",
         },
@@ -90,7 +93,7 @@ var headers = {
   'X-Api-Key': 'API_KEY'
 };
 
-var request = http.Request('GET', Uri.parse('https://naija-places.toneflix.ng/v1/states/ab/lgas/mba/wards'));
+var request = http.Request('GET', Uri.parse('https://naija-places.toneflix.com.ng/v1/states/ab/lgas/mba/wards'));
 
 request.headers.addAll(headers);
 

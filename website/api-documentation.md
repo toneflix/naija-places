@@ -36,7 +36,7 @@ const options = {
 
 headers.append("X-Api-Key", "API_KEY");
 
-fetch("https://naija-places.toneflix.ng/v1/states", options)
+fetch("https://naija-places.toneflix.com.ng/v1/states", options)
     .then((response) => response.json())
     .then((result) => console.log(result))
     .catch((error) => console.log("error", error));
@@ -52,7 +52,7 @@ const options = {
 
 headers.append("X-Api-Key", "API_KEY");
 
-fetch("https://naija-places.toneflix.ng/v1/states/1/cities", options)
+fetch("https://naija-places.toneflix.com.ng/v1/states/1/cities", options)
     .then((response) => response.json())
     .then((result) => console.log(result))
     .catch((error) => console.log("error", error));
@@ -68,7 +68,7 @@ const options = {
 
 headers.append("X-Api-Key", "API_KEY");
 
-fetch("https://naija-places.toneflix.ng/v1/states/1/lgas", options)
+fetch("https://naija-places.toneflix.com.ng/v1/states/1/lgas", options)
     .then((response) => response.json())
     .then((result) => console.log(result))
     .catch((error) => console.log("error", error));
@@ -84,7 +84,7 @@ const options = {
 
 headers.append("X-Api-Key", "API_KEY");
 
-fetch("https://naija-places.toneflix.ng/v1/states/1/lgas/3/wards", options)
+fetch("https://naija-places.toneflix.com.ng/v1/states/1/lgas/3/wards", options)
     .then((response) => response.json())
     .then((result) => console.log(result))
     .catch((error) => console.log("error", error));
@@ -101,7 +101,7 @@ const options = {
 headers.append("X-Api-Key", "API_KEY");
 
 fetch(
-    "https://naija-places.toneflix.ng/v1/states/1/lgas/3/wards/1/units",
+    "https://naija-places.toneflix.com.ng/v1/states/1/lgas/3/wards/1/units",
     options
 )
     .then((response) => response.json())

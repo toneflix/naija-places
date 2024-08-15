@@ -9,6 +9,29 @@ One api to rule them all, query all states, Local government areas, Wards, Polli
 
 # Usage
 
+### Apply API Key
+
+You can get an API key by creating an account on [Naija Places API Portal]([)](https://naija-places.toneflix.com.ng/portal/home).
+Once you have generated your API keys you can add it to every request to the API via the `X-Api-Key` header
+
+#### Example
+
+```js [states]
+const headers = new Headers();
+const options = {
+    method: "GET",
+    headers: headers,
+    redirect: "follow",
+};
+
+headers.append("X-Api-Key", "API_KEY");
+
+fetch("https://naija-places.toneflix.com.ng/v1/states", options)
+    .then((response) => response.json())
+    .then((result) => console.log(result))
+    .catch((error) => console.log("error", error));
+```
+
 ## States
 
 **`https://ng-places.toneflix.com.ng/api/v1/states`**
@@ -16,21 +39,26 @@ One api to rule them all, query all states, Local government areas, Wards, Polli
 ### Example Response
 
 ```json
-[
-    {
-        "id": 1,
-        "slug": "abia",
-        "name": "Abia",
-        "code": "AB"
-    },
-    {
-        "id": 2,
-        "slug": "adamawa",
-        "name": "Adamawa",
-        "code": "AD"
-    },
-    ...
-]
+{
+    "data": [
+        {
+            "id": 1,
+            "slug": "abia",
+            "name": "Abia",
+            "code": "AB"
+        },
+        {
+            "id": 2,
+            "slug": "adamawa",
+            "name": "Adamawa",
+            "code": "AD"
+        },
+        ...
+    ],
+    "status": "success",
+    "message": "Data Fetched.",
+    "statusCode": 200
+}
 ```
 
 ## Local Government Areas
@@ -42,25 +70,38 @@ One api to rule them all, query all states, Local government areas, Wards, Polli
 _`https://ng-places.toneflix.com.ng/api/v1/states/1/lgas`_
 
 ```json
-[
-    {
-        "id": 1,
-        "slug": "aba-north",
-        "name": "Aba North",
-        "code": "EZA",
-        "state": "abia",
-        "stateId": 1
-    },
-    {
-        "id": 2,
-        "slug": "ohafia",
-        "name": "Ohafia",
-        "code": "HAF",
-        "state": "abia",
-        "stateId": 1
-    },
-    ...
-]
+{
+    "data": [
+        {
+            "id": 251,
+            "slug": "aninri",
+            "name": "Aninri",
+            "code": "DBR",
+            "state": "Enugu",
+            "stateId": 14
+        },
+        {
+            "id": 252,
+            "slug": "awgu",
+            "name": "Awgu",
+            "code": "AWG",
+            "state": "Enugu",
+            "stateId": 14
+        },
+        {
+            "id": 253,
+            "slug": "enugu-east",
+            "name": "Enugu East",
+            "code": "NKW",
+            "state": "Enugu",
+            "stateId": 14
+        },
+        ...
+    ],
+    "status": "success",
+    "message": "Data Fetched.",
+    "statusCode": 200
+}
 ```
 
 ## Wards
@@ -72,27 +113,41 @@ _`https://ng-places.toneflix.com.ng/api/v1/states/1/lgas`_
 _`https://ng-places.toneflix.com.ng/api/v1/states/1/lgas/1/wards`_
 
 ```json
-[
-    {
-        "id": 1,
-        "slug": "ariaria-market",
-        "name": "Ariaria Market",
-        "lga": "Aba North",
-        "lgaId": 1,
-        "state": "Abia",
-        "stateId": 1
-    },
-    {
-        "id": 2,
-        "slug": "eziama",
-        "name": "Eziama",
-        "lga": "Aba North",
-        "lgaId": 1,
-        "state": "Abia",
-        "stateId": 1
-    },
-    ...
-]
+{
+    "data": [
+        {
+            "id": 2902,
+            "slug": "asata-township",
+            "name": "Asata Township",
+            "lga": "Enugu North",
+            "lgaId": 254,
+            "state": "Enugu",
+            "stateId": 14
+        },
+        {
+            "id": 2903,
+            "slug": "china-town",
+            "name": "China Town",
+            "lga": "Enugu North",
+            "lgaId": 254,
+            "state": "Enugu",
+            "stateId": 14
+        },
+        {
+            "id": 2904,
+            "slug": "g-r-a",
+            "name": "G R A",
+            "lga": "Enugu North",
+            "lgaId": 254,
+            "state": "Enugu",
+            "stateId": 14
+        },
+        ...
+    ],
+    "status": "success",
+    "message": "Data Fetched.",
+    "statusCode": 200
+}
 ```
 
 ## Polling Units
@@ -104,31 +159,47 @@ _`https://ng-places.toneflix.com.ng/api/v1/states/1/lgas/1/wards`_
 _`https://ng-places.toneflix.com.ng/api/v1/states/1/lgas/1/wards/1/units`_
 
 ```json
-[
-    {
-        "id": 1,
-        "slug": "osusu-rd-prim-school-premises-i",
-        "name": "Osusu Rd Prim School Premises I",
-        "lga": "Aba North",
-        "lgaId": 1,
-        "state": "abia",
-        "stateId": 1,
-        "ward": "Ariaria Market",
-        "wardId": 1
-    },
-    {
-        "id": 2,
-        "slug": "osusu-rd-prim-school-premises-ii",
-        "name": "Osusu Rd Prim School Premises II",
-        "lga": "Aba North",
-        "lgaId": 1,
-        "state": "abia",
-        "stateId": 1,
-        "ward": "Ariaria Market",
-        "wardId": 1
-    },
-    ...
-]
+{
+    "data": [
+        {
+            "id": 37951,
+            "slug": "new-haven-primary-school-i",
+            "name": "New Haven Primary School I",
+            "lga": "Enugu North",
+            "lgaId": 254,
+            "ward": "New Haven",
+            "wardId": 2908,
+            "state": "Enugu",
+            "stateId": 14
+        },
+        {
+            "id": 37952,
+            "slug": "new-haven-primary-school-ii",
+            "name": "New Haven Primary School Ii",
+            "lga": "Enugu North",
+            "lgaId": 254,
+            "ward": "New Haven",
+            "wardId": 2908,
+            "state": "Enugu",
+            "stateId": 14
+        },
+        {
+            "id": 37953,
+            "slug": "new-haven-primary-school-iii",
+            "name": "New Haven Primary School Iii",
+            "lga": "Enugu North",
+            "lgaId": 254,
+            "ward": "New Haven",
+            "wardId": 2908,
+            "state": "Enugu",
+            "stateId": 14
+        },
+        ...
+    ],
+    "status": "success",
+    "message": "Data Fetched.",
+    "statusCode": 200
+}
 ```
 
 ## Towns and Cities
@@ -140,21 +211,74 @@ _`https://ng-places.toneflix.com.ng/api/v1/states/1/lgas/1/wards/1/units`_
 _`https://ng-places.toneflix.com.ng/api/v1/states/1/cities`_
 
 ```json
-[
-    {
-        "id": 1,
-        "slug": "aba",
-        "name": "Aba",
-        "state": "abia",
-        "stateId": 1
-    },
-    {
-        "id": 2,
-        "slug": "abala",
-        "name": "Abala",
-        "state": "abia",
-        "stateId": 1
-    },
-    ...
-]
+{
+    "data": [
+        {
+            "id": 580,
+            "slug": "abakpa-nike",
+            "name": "Abakpa Nike",
+            "state": "Enugu",
+            "stateId": 14
+        },
+        {
+            "id": 581,
+            "slug": "achi",
+            "name": "Achi",
+            "state": "Enugu",
+            "stateId": 14
+        },
+        {
+            "id": 582,
+            "slug": "agbani-road",
+            "name": "Agbani Road",
+            "state": "Enugu",
+            "stateId": 14
+        },
+        ...
+    ],
+    "status": "success",
+    "message": "Data Fetched.",
+    "statusCode": 200
+}
+```
+
+## Errors
+
+| Code | Description        |
+| ---- | ------------------ |
+| 401  | Unauthorized.      |
+| 404  | Not Found.         |
+| 429  | Rate limit exeeded |
+
+### 401 Error Response
+
+```json
+{
+    "data": {},
+    "statusCode": 401,
+    "message": "Unauthorized. You do not have access to this resource.",
+    "status": "error"
+}
+```
+
+### 429 Error Response
+
+```json
+{
+    "data": {},
+    "statusCode": 429,
+    "message": "Rate limit exeeded: you may try again in 54 seconds.",
+    "status": "error"
+}
+```
+
+### 404 Error Response
+
+```json
+{
+    "data": {},
+    "statusCode": 404,
+    "message": "State not found.",
+    "status": "error"
+}
 ```
