@@ -118,10 +118,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-const baseURL =
-    (import.meta.env.DEV
-        ? import.meta.env.VITE_BASEURL_DEV
-        : import.meta.env.VITE_BASEURL) + "/v1";
+const baseURL = "/v1";
 
 const form = ref({
     state: null,
