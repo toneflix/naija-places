@@ -50,7 +50,6 @@ class ApiAccessMiddleware
         /**
          * Check if the request originates from the same domain as the API
          */
-        dd(config('sanctum.stateful'));
         if ($url->contains(parse_url($request->header('origin'), PHP_URL_HOST))) {
             return $next($request);
         }

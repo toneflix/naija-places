@@ -10,16 +10,29 @@ use App\Models\Lga;
 use App\Models\State;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Routing\Middleware\ThrottleRequests;
 use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 class ApiTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->withoutMiddleware(
+            ThrottleRequests::class
+        );
+    }
+
     /**
      * A basic feature test example.
      */
     public function testRequestsCanBeRateLimited(): void
     {
+        $this->withMiddleware(
+            ThrottleRequests::class
+        );
+
         for ($i = 0; $i < 100; $i++) {
             $response = $this->get('/api/');
         }
