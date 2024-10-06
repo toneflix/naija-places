@@ -138,7 +138,13 @@ const form = ref({
     unit: null,
 });
 
-const data = ref({});
+const data = ref({
+    lga: { code: "" },
+    state: { code: "" },
+    unit: "",
+    ward: "",
+    city: "",
+});
 
 const parse = (data: Record<string, any>) => {
     return JSON.stringify(

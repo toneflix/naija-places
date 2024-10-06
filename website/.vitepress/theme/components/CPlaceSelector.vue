@@ -15,13 +15,22 @@ import { useWatcher } from "alova/client";
 import { alova } from "../../utils/alova";
 import { computed, watch, type PropType } from "vue";
 
-interface Params {
-    states: string | number | boolean;
-    cities?: string | number | boolean;
-    wards?: string | number | boolean;
-    units?: string | number | boolean;
-    lgas?: string | number | boolean;
-}
+type Params =
+    | {
+          countries?: string | number | boolean;
+          states: string | number | boolean;
+          cities?: string | number | boolean;
+          wards?: string | number | boolean;
+          units?: string | number | boolean;
+          lgas?: string | number | boolean;
+      }
+    | {
+          subregions: string | number | boolean;
+          countries: string | number | boolean;
+          regions: string | number | boolean;
+          states?: string | number | boolean;
+          cities?: string | number | boolean;
+      };
 
 const emit = defineEmits<{
     (e: "change", state: any): void;
@@ -60,8 +69,10 @@ const { data: places, onSuccess } = useWatcher(
             transform: (e: {
                 data: {
                     id: number;
+                    iso?: string;
                     name: string;
                     slug: string;
+                    code?: string;
                 }[];
             }) => e.data,
         });
@@ -90,7 +101,10 @@ watch(modelValue, (id) => {
     const place = places.value.find((e) => e.id === id);
     emit(
         "change",
-        Object.assign({}, place, { code: (place?.code || "").toLowerCase() })
+        Object.assign({}, place, {
+            code: (place?.code || "").toLowerCase(),
+            iso: place?.iso || "",
+        })
     );
 });
 </script>
