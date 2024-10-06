@@ -149,17 +149,6 @@ if (response.statusCode == 200) {
 }
 ```
 
-### 429 Error Response
-
-```json
-{
-    "data": {},
-    "statusCode": 429,
-    "message": "Rate limit exeeded: you may try again in 54 seconds.",
-    "status": "error"
-}
-```
-
 ### 404 Error Response
 
 ```json
@@ -167,6 +156,17 @@ if (response.statusCode == 200) {
     "data": {},
     "statusCode": 404,
     "message": "State not found.",
+    "status": "error"
+}
+```
+
+### 429 Error Response
+
+```json
+{
+    "data": {},
+    "statusCode": 429,
+    "message": "Rate limit exeeded: you may try again in 54 seconds.",
     "status": "error"
 }
 ```

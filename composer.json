@@ -25,6 +25,7 @@
         "spatie/laravel-permission": "^6.4",
         "toneflix-code/kudisms-notification": "^1.0",
         "toneflix-code/laravel-fileable": "^2.0",
+        "toneflix-code/laravel-resource-modifier": "^1.1",
         "valorin/random": "^0.5.0",
         "yabacon/paystack-php": "^2.2"
     },

@@ -3,8 +3,8 @@ layout: home
 
 hero:
     name: "Naija Places API"
-    text: "Comprehensive Database of Nigerian Geographical Locations"
-    tagline: "One API to rule them all. Query all states, Local Government Areas, Wards, Polling Units, and Towns in Nigeria."
+    text: "Comprehensive Database of Nigerian Geographical Locations + World"
+    tagline: "One API to rule them all. Query all states, Local Government Areas, Wards, Polling Units, and Towns in Nigeria + All World Regions, Subregions, Countries, States and Cities."
     image:
         src: /docs/banner.png
         alt: Banner
@@ -24,7 +24,7 @@ features:
       icon:
           dark: /docs/box-3-fill-dark.svg
           light: /docs/box-3-fill.svg
-      details: Access data for all 36 states, 774 LGAs, thousands of wards, polling units, and towns across Nigeria.
+      details: Access data for all 36 states, 774 LGAs, thousands of wards, polling units, and towns across Nigeria, including all world regions, subregions, countries, states and cities.
     - title: Fast and Reliable
       icon:
           dark: /docs/run-fill-dark.svg

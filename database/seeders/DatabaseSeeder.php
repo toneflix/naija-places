@@ -60,6 +60,7 @@ class DatabaseSeeder extends Seeder
             WardSeeder::class,
             CitySeeder::class,
             UnitSeeder::class,
+            WorldSeeder::class,
         ]);
     }
 }

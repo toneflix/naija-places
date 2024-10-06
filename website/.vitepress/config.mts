@@ -20,12 +20,24 @@ export default defineConfig({
             gtag('js', new Date());
 
             gtag('config', 'G-2ST41R32R3');`
-        ]
+        ],
+        ['meta', {
+            name: 'auto',
+            content: 'Toneflix Code.',
+        }],
+        ['meta', {
+            name: 'keywords',
+            content: 'Country, State, City, Countries, States, Cities, API, Local Government Areas, Wards, Polling Units, World, Nigeria, Naija, Places, Location',
+        }],
+        ['meta', {
+            name: 'description',
+            content: 'One api to rule them all, query all states, Local government areas, Wards, Polling Units and Towns in Nigeria + all world regions, countries, states and cities.',
+        }],
     ],
     title: "Naija Places API",
     cleanUrls: true,
     assetsDir: 'doc-assets',
-    description: "One api to rule them all, query all states, Local government areas, Wards, Polling Units and Towns in Nigeria.",
+    description: "One api to rule them all, query all states, Local government areas, Wards, Polling Units and Towns in Nigeria + all world regions, countries, states and cities.",
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
         logo: '/docs/logo.png',
@@ -45,6 +57,11 @@ export default defineConfig({
                     { text: 'Wards', link: '/docs/wards' },
                     { text: 'Polling Units', link: '/docs/units' },
                     { text: 'Towns and Cities', link: '/docs/cities' },
+                    { text: 'World Regions', link: '/docs/world/regions' },
+                    { text: 'World Subregions', link: '/docs/world/subregions' },
+                    { text: 'World Countries', link: '/docs/world/countries' },
+                    { text: 'World States', link: '/docs/world/states' },
+                    { text: 'World Cities', link: '/docs/world/cities' },
                 ]
             }
         ],
