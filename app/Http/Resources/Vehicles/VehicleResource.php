@@ -19,7 +19,7 @@ class VehicleResource extends JsonResource
 
         return [
             "id" => $this->id,
-            "name" => $this->model->name,
+            "name" => join(' ', [$this->model->name, $this->model->generation]),
             "model" => $this->model->name,
             "generation" => $this->model->generation,
             "year" => $this->year->year_from,
