@@ -24,14 +24,7 @@ class WorldCitySeeder extends Seeder
             // Get the contents of the SQL file
             $sql = str(File::get($path))->replace(["\'", '\"'], ["''", '"'])->toString();
 
-            // try {
-            // Execute the SQL
             DB::unprepared($sql);
-            // } catch (\Throwable $th) {
-            // $this->command->error('Error occured: ' . $th->getMessage());
-            // return;
-            // }
-
             $this->command->info('SQL file seeded successfully!');
         } else {
             $this->command->error('SQL file not found.');

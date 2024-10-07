@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'paginated_response_extra' => ['meta', 'links'],
+    'paginated_response_extra' => ['meta'],
 
     /*
     |---------------------------------------------------------------------------------
@@ -31,9 +31,9 @@ return [
 
     'paginated_response_meta' => [
         'total' => 'total',
-        'perPage' => 'per_page',
-        'lastPage' => 'last_page',
-        'currentPage' => 'current_page',
+        'per_page' => 'perPage',
+        'last_page' => 'lastPage',
+        'current_page' => 'currentPage',
     ],
 
     /*
