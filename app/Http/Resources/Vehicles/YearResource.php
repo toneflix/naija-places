@@ -16,7 +16,7 @@ class YearResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'year' => $this->year_from,
+            'name' => $this->year_from,
             'period' => join(' - ', [$this->year_from, $this->year_to]),
             'year_from' => $this->year_from,
             'year_to' => $this->year_to,

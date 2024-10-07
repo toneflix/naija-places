@@ -31,7 +31,7 @@ class VehicleYearController extends Controller
         if ($request->boolean('distinct')) {
             $list = $query
                 ->where('year_from', '!=', '')
-                ->select(['vehicle_years.id', 'year_from as year'])
+                ->select(['vehicle_years.id', 'year_from as name'])
                 ->groupBy(['year_from'])
                 ->orderBy('year_from')
                 ->paginate($request->input('limit', 50));
@@ -72,7 +72,7 @@ class VehicleYearController extends Controller
         if ($request->boolean('distinct')) {
             $list = $query
                 ->where('year_from', '!=', '')
-                ->select(['vehicle_years.id', 'year_from as year'])
+                ->select(['vehicle_years.id', 'year_from as name'])
                 ->groupBy(['year_from'])
                 ->orderBy('year_from')
                 ->paginate($request->input('limit', 50));
