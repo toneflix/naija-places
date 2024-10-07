@@ -19,12 +19,19 @@ class VehicleManufacturer extends Model
      */
     public function vehicles(): HasManyThrough
     {
+        /**
+         * TODO: If you end up using a none sqlite database, ->groupBy('vehicle_models.id')
+         * may pose as a problem that may need to be fixed
+         */
+
         return $this->hasManyThrough(
             Vehicle::class,
             VehicleModel::class,
             'manufacturer_id',
             'model_id',
-        )->select('vehicles.*')->groupBy('vehicle_models.id');
+        )
+            ->select(['vehicles.*', 'vehicle_models.id'])
+            ->groupBy('vehicle_models.id');
     }
 
     /**
