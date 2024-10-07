@@ -4,7 +4,7 @@ outline: deep
 
 # Local Government Areas
 
-<Badge type="warning" text="GET" /> `https://ng-places.toneflix.com.ng/api/v1/states/{siso}/lgas`
+<Badge type="warning" text="GET" /> `https://naija-places.toneflix.com.ng/api/v1/states/{siso}/lgas`
 
 ## Security
 

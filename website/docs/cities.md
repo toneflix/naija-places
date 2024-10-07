@@ -4,7 +4,7 @@ outline: deep
 
 # Cities
 
-<Badge type="warning" text="GET" /> `https://ng-places.toneflix.com.ng/api/v1/states/{siso}/cities`
+<Badge type="warning" text="GET" /> `https://naija-places.toneflix.com.ng/api/v1/states/{siso}/cities`
 
 ## Security
 

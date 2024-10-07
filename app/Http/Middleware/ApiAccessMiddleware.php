@@ -39,15 +39,6 @@ class ApiAccessMiddleware
         $url = str($request->url());
 
         /**
-         * Check if the request originates from one of sanctums stateful domains
-         */
-        foreach (config('sanctum.stateful', []) as $key => $stateful) {
-            if ($url->contains($stateful)) {
-                return $next($request);
-            }
-        }
-
-        /**
          * Check if the request originates from the same domain as the API
          */
         if ($url->contains(parse_url($request->header('origin'), PHP_URL_HOST))) {

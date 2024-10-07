@@ -4,7 +4,7 @@ outline: deep
 
 # States
 
-<Badge type="warning" text="GET" /> `https://ng-places.toneflix.com.ng/api/v1/countries/{iso}/states/{siso}`
+<Badge type="warning" text="GET" /> `https://naija-places.toneflix.com.ng/api/v1/countries/{iso}/states/{siso}`
 
 ## Security
 
@@ -46,7 +46,7 @@ const options = {
 headers.append("X-Api-Key", "API_KEY");
 
 fetch(
-    "https://ng-places.toneflix.com.ng/api/v1/countries/NG/states/AB/cities",
+    "https://naija-places.toneflix.com.ng/api/v1/countries/NG/states/AB/cities",
     options
 )
     .then((response) => response.json())
@@ -58,7 +58,7 @@ fetch(
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://ng-places.toneflix.com.ng/api/v1/countries/NG/states/AB/cities',
+  CURLOPT_URL => 'https://naija-places.toneflix.com.ng/api/v1/countries/NG/states/AB/cities',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_HTTPHEADER => array(
     'X-Api-Key: API_KEY'
@@ -75,7 +75,7 @@ echo $response;
 import axios from "axios";
 
 axios
-    .get("https://ng-places.toneflix.com.ng/api/v1/countries/NG/states/AB/cities", {
+    .get("https://naija-places.toneflix.com.ng/api/v1/countries/NG/states/AB/cities", {
         headers: {
             X-Api-Key: "API_KEY",
         },
@@ -93,7 +93,7 @@ var headers = {
   'X-Api-Key': 'API_KEY'
 };
 
-var request = http.Request('GET', Uri.parse('https://ng-places.toneflix.com.ng/api/v1/countries/NG/states/AB/cities'));
+var request = http.Request('GET', Uri.parse('https://naija-places.toneflix.com.ng/api/v1/countries/NG/states/AB/cities'));
 
 request.headers.addAll(headers);
 

@@ -34,7 +34,7 @@ fetch("https://naija-places.toneflix.com.ng/v1/states", options)
 
 ## States
 
-**`https://ng-places.toneflix.com.ng/api/v1/states`**
+**`https://naija-places.toneflix.com.ng/api/v1/states`**
 
 ### Example Response
 
@@ -63,11 +63,11 @@ fetch("https://naija-places.toneflix.com.ng/v1/states", options)
 
 ## Local Government Areas
 
-**`https://ng-places.toneflix.com.ng/api/v1/states/{stateId}/lgas`**
+**`https://naija-places.toneflix.com.ng/api/v1/states/{stateId}/lgas`**
 
 ### Example Response
 
-_`https://ng-places.toneflix.com.ng/api/v1/states/1/lgas`_
+_`https://naija-places.toneflix.com.ng/api/v1/states/1/lgas`_
 
 ```json
 {
@@ -106,11 +106,11 @@ _`https://ng-places.toneflix.com.ng/api/v1/states/1/lgas`_
 
 ## Wards
 
-**`https://ng-places.toneflix.com.ng/api/v1/states/{state}/lgas/{lga}/wards`**
+**`https://naija-places.toneflix.com.ng/api/v1/states/{state}/lgas/{lga}/wards`**
 
 ### Example Response
 
-_`https://ng-places.toneflix.com.ng/api/v1/states/1/lgas/1/wards`_
+_`https://naija-places.toneflix.com.ng/api/v1/states/1/lgas/1/wards`_
 
 ```json
 {
@@ -152,11 +152,11 @@ _`https://ng-places.toneflix.com.ng/api/v1/states/1/lgas/1/wards`_
 
 ## Polling Units
 
-**`https://ng-places.toneflix.com.ng/api/v1/states/{state}/lgas/{lga}/wards/{ward}/units`**
+**`https://naija-places.toneflix.com.ng/api/v1/states/{state}/lgas/{lga}/wards/{ward}/units`**
 
 ### Example Response
 
-_`https://ng-places.toneflix.com.ng/api/v1/states/1/lgas/1/wards/1/units`_
+_`https://naija-places.toneflix.com.ng/api/v1/states/1/lgas/1/wards/1/units`_
 
 ```json
 {
@@ -204,11 +204,11 @@ _`https://ng-places.toneflix.com.ng/api/v1/states/1/lgas/1/wards/1/units`_
 
 ## Towns and Cities
 
-**`https://ng-places.toneflix.com.ng/api/v1/states/{stateId}/cities`**
+**`https://naija-places.toneflix.com.ng/api/v1/states/{stateId}/cities`**
 
 ### Example Response
 
-_`https://ng-places.toneflix.com.ng/api/v1/states/1/cities`_
+_`https://naija-places.toneflix.com.ng/api/v1/states/1/cities`_
 
 ```json
 {
