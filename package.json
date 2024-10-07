@@ -4,6 +4,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
+        "docs:deploy": "yarn docs:build && git add . && git commit -m \"Chore: Rebuild documentation\" && git push",
         "docs:build": "cd ./website && yarn docs:build && cd ../ && yarn docs:update",
         "docs:update": "rm -rf ./public/doc-assets/ ./public/docs ./public/portal && rm ./public/404.html ./public/api-documentation.html ./public/demo.html  ./public/get-started.html  ./public/index.html  ./public/hashmap.json & cp -rf ./website/.vitepress/dist/* ./public && cp ./website/docs/*.{svg,png,jpg} ./public/docs/"
     },
