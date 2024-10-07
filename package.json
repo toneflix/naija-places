@@ -3,7 +3,9 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "docs:build": "cd ./website && yarn docs:build && cd ../ && yarn docs:update",
+        "docs:update": "rm -rf ./public/doc-assets/ ./public/docs ./public/portal && rm ./public/404.html ./public/api-documentation.html ./public/demo.html  ./public/get-started.html  ./public/index.html  ./public/hashmap.json & cp -rf ./website/.vitepress/dist/* ./public && cp ./website/docs/*.{svg,png,jpg} ./public/docs/"
     },
     "devDependencies": {
         "axios": "^1.6.4",
