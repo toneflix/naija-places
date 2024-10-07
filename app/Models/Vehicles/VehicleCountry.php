@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 class VehicleCountry extends Model
 {
     use HasFactory;
+    use \App\Traits\ModelCanExtend;
     use \Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
     /**

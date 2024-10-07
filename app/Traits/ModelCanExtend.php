@@ -2,6 +2,8 @@
 
 namespace App\Traits;
 
+use App\Models\Log;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Valorin\Random\Random;
 
 trait ModelCanExtend
@@ -21,5 +23,10 @@ trait ModelCanExtend
         }
 
         return $username->toString();
+    }
+
+    public function logs(): MorphMany
+    {
+        return $this->morphMany(Log::class, 'model');
     }
 }

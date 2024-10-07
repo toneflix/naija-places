@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 class VehicleModel extends Model
 {
     use HasFactory;
+    use \App\Traits\ModelCanExtend;
 
     /**
      * Get the manufacturer that owns the VehicleModel

@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Country extends Model
 {
     use HasFactory;
+    use \App\Traits\ModelCanExtend;
 
     /**
      * Get the attributes that should be cast.

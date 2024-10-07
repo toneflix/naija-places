@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class VehicleBody extends Model
 {
     use HasFactory;
+    use \App\Traits\ModelCanExtend;
 }

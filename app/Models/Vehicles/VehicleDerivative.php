@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class VehicleDerivative extends Model
 {
     use HasFactory;
+    use \App\Traits\ModelCanExtend;
 }

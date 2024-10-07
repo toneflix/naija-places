@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Vehicle extends Model
 {
     use HasFactory;
+    use \App\Traits\ModelCanExtend;
 
     /**
      * Get the model that owns the Vehicle

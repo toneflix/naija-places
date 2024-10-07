@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class SubRegion extends Model
 {
     use HasFactory;
+    use \App\Traits\ModelCanExtend;
 
     /**
      * Get the attributes that should be cast.

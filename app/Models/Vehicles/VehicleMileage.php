@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class VehicleMileage extends Model
 {
     use HasFactory;
+    use \App\Traits\ModelCanExtend;
 
     /**
      * The attributes to be appended
