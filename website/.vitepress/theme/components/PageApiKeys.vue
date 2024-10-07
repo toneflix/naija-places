@@ -83,7 +83,7 @@
                                                 @click="copyClip(key.key)"
                                                 v-if="!key.key.includes('****')"
                                             />
-                                            <span class="truncate max-w-60">
+                                            <span class="truncate max-w-96">
                                                 {{ key.key }}
                                             </span>
                                         </p>
