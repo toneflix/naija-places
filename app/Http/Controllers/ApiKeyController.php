@@ -40,6 +40,7 @@ class ApiKeyController extends Controller
 
         $key = $user->apiKeys()->make();
         $key->name = $request->name;
+        $key->rate_limit = 0;
         $key->save();
 
         return (new ApiKeyResource($key))->response()->setStatusCode(HttpStatus::CREATED->value);
