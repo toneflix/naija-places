@@ -18,6 +18,21 @@ hero:
         - theme: alt
           text: Polling Units
           link: /docs/units
+        - theme: brand
+          text: World Regions
+          link: /docs/world/regions
+        - theme: alt
+          text: World Subregions
+          link: /docs/world/subregions
+        - theme: alt
+          text: Countries
+          link: /docs/world/countries
+        - theme: alt
+          text: World States
+          link: /docs/world/states
+        - theme: alt
+          text: World Cities
+          link: /docs/world/cities
 ---
 
 <!-- ## Examples -->

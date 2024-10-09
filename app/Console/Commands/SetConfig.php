@@ -84,6 +84,10 @@ class SetConfig extends Command
             return 1;
         }
 
+        if (in_array($type, ['json', 'array'])) {
+            $value = json_decode(str($value)->replace(['"[', ']"', '"{', '}"', "'"], ['[', ']', '{', '}', '"'])->toString());
+        }
+
         /**
          * Save the configuration
          */
