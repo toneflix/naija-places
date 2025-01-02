@@ -41,7 +41,7 @@ const options = {
 
 headers.append("X-Api-Key", "API_KEY");
 
-fetch("https://naija-places.toneflix.com.ng/v1/regions", options)
+fetch("https://naija-places.toneflix.com.ng/api/v1/regions", options)
     .then((response) => response.json())
     .then((result) => console.log(result))
     .catch((error) => console.log("error", error));
