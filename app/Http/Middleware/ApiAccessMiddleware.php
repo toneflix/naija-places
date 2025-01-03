@@ -29,7 +29,6 @@ class ApiAccessMiddleware
          */
         foreach (Providers::config('freemium_domains', []) as $domain) {
             $ref = str(parse_url($request->header('referer'), PHP_URL_HOST));
-
             if ($ref->contains($domain)) {
                 return $next($request);
             }

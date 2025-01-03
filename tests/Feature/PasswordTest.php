@@ -15,7 +15,7 @@ class PasswordTest extends TestCase
     {
         parent::setUp();
 
-        $this->markTestSkipped('all tests in this file are invactive for this server configuration!');
+        // $this->markTestSkipped('all tests in this file are invactive for this server configuration!');
     }
 
     public function testCanRequestPasswordReset(): void
@@ -23,7 +23,7 @@ class PasswordTest extends TestCase
         $user = User::factory()->unverified()->create();
 
         $response = $this->post(
-            'api/auth/forgot-password',
+            'api/v1/auth/forgot-password',
             ['email' => $user->email]
         );
 
@@ -35,14 +35,14 @@ class PasswordTest extends TestCase
         $user = User::factory()->unverified()->create();
 
         $this->post(
-            'api/auth/forgot-password',
+            'api/v1/auth/forgot-password',
             ['email' => $user->email]
         );
 
         $code = PasswordCodeResets::latest()->firstWhere('email', $user->email);
 
         $response = $this->post(
-            'api/auth/reset-password/check-code',
+            'api/v1/auth/reset-password/check-code',
             ['code' => $code->code]
         );
 
@@ -54,14 +54,14 @@ class PasswordTest extends TestCase
         $user = User::factory()->unverified()->create();
 
         $this->post(
-            'api/auth/forgot-password',
+            'api/v1/auth/forgot-password',
             ['email' => $user->email]
         );
 
         $code = PasswordCodeResets::latest()->firstWhere('email', $user->email);
 
         $response = $this->post(
-            'api/auth/reset-password/check-code',
+            'api/v1/auth/reset-password/check-code',
             [
                 'code' => $code->code,
                 'password' => 'password',
@@ -76,15 +76,15 @@ class PasswordTest extends TestCase
     {
         $user = User::factory()->unverified()->create();
 
-        $this->post(
-            'api/auth/forgot-password',
+        $e = $this->post(
+            'api/v1/auth/forgot-password',
             ['email' => $user->email]
         );
 
-        $code = PasswordCodeResets::latest()->firstWhere('email', $user->email);
+        $code = PasswordCodeResets::latest()->first();
 
         $response = $this->post(
-            'api/auth/reset-password/check-code',
+            'api/v1/auth/reset-password/check-code',
             [
                 'code' => Url::base64urlEncode($code->code . '|' . MD5(time())),
                 'password' => 'password',

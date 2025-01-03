@@ -20,7 +20,7 @@ class HelpersTest extends TestCase
     public function testConfigurationCommand(): void
     {
 
-        $this->markTestSkipped('all tests in this file are invactive for this server configuration!');
+        // $this->markTestSkipped('all tests in this file are invactive for this server configuration!');
         $this->artisan("app:set-config")
             ->expectsQuestion('What do you want to configure?', 'app_name')
             ->expectsQuestion('What do you want to set as the value for app_name?', 'Test Site')

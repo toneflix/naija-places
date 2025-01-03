@@ -19,7 +19,7 @@ class NotificationsTest extends TestCase
     {
         parent::setUp();
 
-        $this->markTestSkipped('all tests in this file are invactive for this server configuration!');
+        // $this->markTestSkipped('all tests in this file are invactive for this server configuration!');
     }
 
     /**
@@ -50,7 +50,7 @@ class NotificationsTest extends TestCase
         $user->sendEmailVerificationNotification();
 
         $this->actingAs($user)->put(
-            'api/verify/with-code/email',
+            'api/v1/verify/with-code/email',
             ['code' => $user->email_verify_code]
         );
 
@@ -69,7 +69,7 @@ class NotificationsTest extends TestCase
         $user->sendEmailVerificationNotification();
 
         $this->actingAs($user)->put(
-            'api/verify/with-code/email',
+            'api/v1/verify/with-code/email',
             ['code' => $user->email_verify_code]
         );
 
@@ -87,7 +87,7 @@ class NotificationsTest extends TestCase
         $user->sendEmailVerificationNotification();
 
         $this->actingAs($user)->put(
-            'api/verify/with-code/email',
+            'api/v1/verify/with-code/email',
             ['code' => Url::base64urlEncode($user->email_verify_code . '|' . MD5(time()))]
         );
 

@@ -38,7 +38,7 @@ class Providers
         $config = Configuration::build($loadSecret);
 
         if (is_array($key)) {
-            return Configuration::set($key);
+            return Configuration::setConfig($key);
         }
 
         if (is_null($key)) {

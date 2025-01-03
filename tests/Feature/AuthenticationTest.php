@@ -17,14 +17,14 @@ class AuthenticationTest extends TestCase
     {
         parent::setUp();
 
-        $this->markTestSkipped('all tests in this file are invactive for this server configuration!');
+        // $this->markTestSkipped('all tests in this file are invactive for this server configuration!');
     }
 
     public function testUnknownUserWillNotBeFound(): void
     {
         $response = $this->withCredentials()
             ->post(
-                '/api/auth/login/',
+                '/api/v1/auth/login/',
                 [
                     'email' => $this->faker('En-NG')->freeEmail,
                     'password' => 'password',
@@ -43,7 +43,7 @@ class AuthenticationTest extends TestCase
     {
         $response = $this->withCredentials()
             ->post(
-                '/api/auth/register/',
+                '/api/v1/auth/register/',
                 [
                     'email' => $this->faker('en-NG')->freeEmail,
                     'lastname' => $this->faker('en-NG')->lastName,
@@ -58,7 +58,7 @@ class AuthenticationTest extends TestCase
             );
 
         $response->assertStatus(201);
-        $this->assertArrayHasKey('id', $response->collect());
+        $this->assertArrayHasKey('id', $response->collect('data'));
     }
 
     public function testUserCanLogin(): void
@@ -67,7 +67,7 @@ class AuthenticationTest extends TestCase
 
         $response = $this->withCredentials()
             ->post(
-                '/api/auth/login/',
+                '/api/v1/auth/login/',
                 [
                     'email' => $user->email,
                     'password' => 'password',
@@ -77,9 +77,8 @@ class AuthenticationTest extends TestCase
                     'accept' => 'application/json',
                 ]
             );
-
         $response->assertStatus(200);
-        $this->assertArrayHasKey('id', $response->collect());
+        $this->assertArrayHasKey('id', $response->collect('data'));
     }
 
     public function testUserCanLogout(): void
@@ -89,7 +88,7 @@ class AuthenticationTest extends TestCase
             ['*']
         );
         $response = $this->withHeader('X-Requested-With', 'XMLHttpRequest')->withCredentials()
-            ->post('/api/account/logout/');
+            ->post('/api/v1/account/logout/');
 
         $response->assertStatus(200);
     }
@@ -101,7 +100,7 @@ class AuthenticationTest extends TestCase
 
         $response = $this->withCredentials()
             ->post(
-                '/api/auth/forgot-password/',
+                '/api/v1/auth/forgot-password/',
                 [
                     'email' => $user->email,
                 ],
@@ -121,7 +120,7 @@ class AuthenticationTest extends TestCase
 
         $this->withCredentials()
             ->post(
-                '/api/auth/forgot-password/',
+                '/api/v1/auth/forgot-password/',
                 [
                     'email' => $user->email,
                 ],
@@ -135,7 +134,7 @@ class AuthenticationTest extends TestCase
 
         $response = $this->withCredentials()
             ->post(
-                '/api/auth/reset-password/check-code/',
+                '/api/v1/auth/reset-password/check-code/',
                 [
                     'code' => $c->code,
                 ],
@@ -155,7 +154,7 @@ class AuthenticationTest extends TestCase
 
         $this->withCredentials()
             ->post(
-                '/api/auth/forgot-password/',
+                '/api/v1/auth/forgot-password/',
                 [
                     'email' => $user->email,
                 ],
@@ -169,7 +168,7 @@ class AuthenticationTest extends TestCase
 
         $response = $this->withCredentials()
             ->post(
-                '/api/auth/reset-password/',
+                '/api/v1/auth/reset-password/',
                 [
                     'code' => $c->code,
                     'password' => 'password1',

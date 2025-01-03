@@ -16,14 +16,6 @@ use Tests\TestCase;
 
 class ApiTest extends TestCase
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->withoutMiddleware(
-            ThrottleRequests::class
-        );
-    }
-
     /**
      * A basic feature test example.
      */
