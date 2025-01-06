@@ -2,13 +2,13 @@
 outline: deep
 ---
 
-# Getting Started with Naija Places API
+# Getting Started with Toneflix Places API
 
-To start using the Naija Places API, you’ll need to generate an API key. Follow these simple steps:
+To start using the Toneflix Places API, you’ll need to generate an API key. Follow these simple steps:
 
 ## Step 1: Register or Log In
 
-1. Visit the Naija Places API [Portal](portal/home).
+1. Visit the Toneflix Places API [Portal](portal/home).
 2. Register for an account if you don’t have one. Provide the necessary details and verify your email address.
 3. If you already have an account, simply log in using your credentials.
 
@@ -23,7 +23,7 @@ To start using the Naija Places API, you’ll need to generate an API key. Follo
 
 ## Step 3: Start Making API Requests
 
-With your API key, you can now begin making requests to the Naija Places API. Include the key in your request headers as follows:
+With your API key, you can now begin making requests to the Toneflix Places API. Include the key in your request headers as follows:
 
 ```http
 X-Api-Key: YOUR_API_KEY

@@ -21,7 +21,7 @@
     },
     "dependencies": {
         "@tailwindcss/forms": "^0.5.7",
-        "alova": "^3.0.7",
+        "alova": "^3.2.7",
         "chart.js": "^4.4.3",
         "notiflix": "^3.2.7",
         "pinia": "^2.2.1",

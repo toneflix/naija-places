@@ -33,6 +33,33 @@ hero:
         - theme: alt
           text: World Cities
           link: /docs/world/cities
+        - theme: brand
+          text: Cars
+          link: /docs/cars
+        - theme: alt
+          text: Countries/Origins
+          link: /docs/world/cities
+        - theme: alt
+          text: Make Years
+          link: /docs/cars/years
+        - theme: alt
+          text: Manufacturers
+          link: /docs/cars/manufacturers
+        - theme: alt
+          text: Vehicles
+          link: /docs/cars/vehicles
+        - theme: alt
+          text: Mileages
+          link: /docs/cars/mileages
+        - theme: alt
+          text: Engines
+          link: /docs/cars/engines
+        - theme: alt
+          text: Models
+          link: /docs/cars/models
+        - theme: alt
+          text: Derivatives
+          link: /docs/cars/derivatives
 ---
 
 <!-- ## Examples -->

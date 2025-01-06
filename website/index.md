@@ -2,9 +2,9 @@
 layout: home
 
 hero:
-    name: "Naija Places API"
-    text: "Comprehensive Database of Nigerian Geographical Locations + World"
-    tagline: "One API to rule them all. Query all states, Local Government Areas, Wards, Polling Units, and Towns in Nigeria + All World Regions, Subregions, Countries, States and Cities."
+    name: "Toneflix Places API"
+    text: "Comprehensive Geolocation and Car Data APIs – Nigeria First, with Full Global Coverage"
+    tagline: "Developer friendly Geolocation and Car API. Query all states, Local Government Areas, Wards, Polling Units, and Towns in Nigeria + All World Regions, Subregions, Countries, States and Cities, and Cars."
     image:
         src: /docs/banner.png
         alt: Banner

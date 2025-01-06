@@ -1,12 +1,12 @@
 import { AlovaGenerics, Method, createAlova } from 'alova';
 import VueHook, { VueHookType } from 'alova/vue';
+import fetchAdapter, { FetchRequestInit } from 'alova/fetch';
 
 import { bootstrapStore } from '../store/bootstrap';
 import { createClientTokenAuthentication } from 'alova/client';
-import fetchAdapter from 'alova/fetch';
 
 type ResponseMethod =
-    Method<AlovaGenerics<any, any, fetchAdapter.FetchRequestInit, Response, Headers, any, any, any>>
+    Method<AlovaGenerics<any, any, FetchRequestInit, Response, Headers, any, any, any>>
 /**
  *
  */

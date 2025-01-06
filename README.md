@@ -1,4 +1,4 @@
-# Naija Places API
+# Toneflix Places API
 
 [![Test & Lint](https://github.com/toneflix/naija-places/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/toneflix/naija-places/actions/workflows/run-tests.yml)
 [![codecov](https://codecov.io/gh/toneflix/naija-places/graph/badge.svg?token=2O7aFulQ9P)](https://codecov.io/gh/toneflix/naija-places)
@@ -11,7 +11,7 @@ One api to rule them all, query all states, Local government areas, Wards, Polli
 
 ### Apply API Key
 
-You can get an API key by creating an account on [Naija Places API Portal]([)](https://naija-places.toneflix.com.ng/portal/home).
+You can get an API key by creating an account on [Toneflix Places API Portal]([)](https://naija-places.toneflix.com.ng/portal/home).
 Once you have generated your API keys you can add it to every request to the API via the `X-Api-Key` header
 
 #### Example

@@ -28,7 +28,7 @@ class VehicleYearController extends Controller
                 fn($q) => $q->where('year_to', '<=', $request->max)
             );
 
-        if ($request->boolean('distinct')) {
+        if (!$request->boolean('sick')) {
             $list = $query
                 ->where('year_from', '!=', '')
                 ->select(['vehicle_years.id', 'year_from as name'])
@@ -69,7 +69,7 @@ class VehicleYearController extends Controller
                 fn($q) => $q->where('year_to', '<=', $request->max)
             );
 
-        if ($request->boolean('distinct')) {
+        if (!$request->boolean('sick')) {
             $list = $query
                 ->where('year_from', '!=', '')
                 ->select(['vehicle_years.id', 'year_from as name'])

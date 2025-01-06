@@ -36,11 +36,12 @@ class ApiAccessMiddleware
 
         // Get the current url from the request
         $url = str($request->url());
+        $localhost = str(parse_url($request->header('referer'), PHP_URL_HOST))->is('localhost');
 
         /**
          * Check if the request originates from the same domain as the API
          */
-        if ($url->contains(parse_url($request->header('origin'), PHP_URL_HOST))) {
+        if ($url->contains(parse_url($request->header('origin'), PHP_URL_HOST)) || $localhost) {
             return $next($request);
         }
 

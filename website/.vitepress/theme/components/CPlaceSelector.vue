@@ -36,6 +36,17 @@ const emit = defineEmits<{
     (e: "change", state: any): void;
 }>();
 
+const props = withDefaults(
+    defineProps<{
+        query?: { [record: string]: string };
+        baseUrl: string;
+    }>(),
+    {
+        query: () => ({}),
+        baseUrl: "/v1",
+    }
+);
+
 const modelValue = defineModel<string | number>("modelValue");
 
 const params = defineModel("params", {
@@ -65,7 +76,8 @@ const url = computed<string | null>(() => {
 
 const { data: places, onSuccess } = useWatcher(
     () => {
-        const config = alova.Get(`v1${url.value ?? ""}`, {
+        const config = alova.Get(props.baseUrl + `${url.value ?? ""}`, {
+            params: props.query,
             transform: (e: {
                 data: {
                     id: number;
@@ -104,6 +116,7 @@ watch(modelValue, (id) => {
         Object.assign({}, place, {
             code: (place?.code || "").toLowerCase(),
             iso: place?.iso || "",
+            id: place?.id || "",
         })
     );
 });
