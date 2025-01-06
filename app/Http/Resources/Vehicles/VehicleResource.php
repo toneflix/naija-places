@@ -40,7 +40,7 @@ class VehicleResource extends JsonResource
             "rel" => [
                 "year_id" => $this->year->id,
                 "country_id" => $this->country->id,
-                "manufacturer" => $this->model->manufacturer?->id,
+                "manufacturer_id" => $this->model->manufacturer?->id,
             ],
             'miles_per_gallon' => $this->whenLoaded('mileage', fn() => $this->mileage->miles_per_gallon),
             "createdAt" => $this->created_at,
