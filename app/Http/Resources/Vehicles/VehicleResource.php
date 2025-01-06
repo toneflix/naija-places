@@ -37,6 +37,11 @@ class VehicleResource extends JsonResource
                     'gasoline' => 'gasoline',
                 ], str($this->engine->engine_type ?: '')->lower(), $this->engine->engine_type);
             }),
+            "rel" => [
+                "year_id" => $this->year->id,
+                "country_id" => $this->country->id,
+                "manufacturer" => $this->model->manufacturer?->id,
+            ],
             'miles_per_gallon' => $this->whenLoaded('mileage', fn() => $this->mileage->miles_per_gallon),
             "createdAt" => $this->created_at,
             "updatedAt" => $this->updated_at,
