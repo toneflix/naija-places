@@ -18,7 +18,7 @@ class WardResource extends JsonResource
 
         return [
             'id' => $this->id,
-            'iso2' => $this->id,
+            'iso2' => (string)$this->id,
             'slug' => $this->slug,
             'name' => $this->name,
             'lga' => $this->lga->name,
