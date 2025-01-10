@@ -18,6 +18,7 @@ class LgaResource extends JsonResource
 
         return [
             'id' => $this->id,
+            'iso2' => $this->code,
             'slug' => $this->slug,
             'name' => $this->name,
             'code' => $this->code,
