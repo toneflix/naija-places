@@ -23,7 +23,7 @@ class ApiKeyResource extends JsonResource
             'rateLimit' => $this->rate_limit,
             'createdAt' => $this->created_at,
             'createDate' => $this->created_at?->format('Y-m-d'),
-            'log' => $this->log,
+            // 'log' => $this->log,
             'rateLimited' => $this->rate_limited,
             'stats' => $this->when($with->contains('stats'), fn() => [
                 'totalCalls' => $this->calls['total'] ?? 0,

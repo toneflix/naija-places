@@ -95,13 +95,13 @@ class ApiKey extends Model
                     ->select('origin as url', DB::raw('COUNT(*) as calls'))
                     ->groupBy('url')
                     ->orderByDesc('calls')
-                    ->whereNotNull('url')
+                    ->whereNotNull('origin')
                     ->first(),
                 'daily_top_origin' => $this->log()
                     ->select('origin as url', DB::raw('COUNT(*) as calls'))
                     ->groupBy('url')
                     ->orderByDesc('calls')
-                    ->whereNotNull('url')
+                    ->whereNotNull('origin')
                     ->whereBetween('created_at', [
                         now()->startOfDay(),
                         now()->endOfDay(),
