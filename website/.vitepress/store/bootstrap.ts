@@ -6,7 +6,10 @@ export type User = { id: string, email: string, phone: string, imageUrl: string,
 export const bootstrapStore = defineStore('bootstrap', () => {
     const user = ref<User>(<User>{})
     const token = ref<string | null>(null)
-    const cache = ref<any>({})
+    const cache = ref<{
+        [x: string]: string;
+        pageTitle: string;
+    }>({ pageTitle: '' })
     const redirect = ref<string | undefined>()
 
     function saveAuthUser (us: any, tk: string) {

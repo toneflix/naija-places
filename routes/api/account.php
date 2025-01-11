@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\ApiKeyController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Account\ApiKeyController;
+use App\Http\Controllers\Account\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->prefix('account')->name('account.')->group(function () {

@@ -45,7 +45,7 @@
         <ul role="list" class="divide-y divide-gray-200">
             <li :key="key.id" v-for="key in data">
                 <a
-                    href="#"
+                    :href="`/portal/api-key/?key=${key.id}`"
                     class="block hover:bg-gray-50 dark:hover:bg-gray-800"
                 >
                     <div class="flex items-center px-4 py-4 sm:px-6">
@@ -60,7 +60,7 @@
                                             type="button"
                                             class="px-1.5 py-1 text-white bg-red-600 hover:bg-red-700 focus:ring-red-500"
                                             :loading="deleting === key.id"
-                                            @click="deleteIt(key.id)"
+                                            @click.prevent="deleteIt(key.id)"
                                         >
                                             <i
                                                 class="text-sm ri-delete-bin-fill"

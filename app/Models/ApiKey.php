@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use App\Helpers\Providers;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\DB;
 use Valorin\Random\Random;
 
 class ApiKey extends Model
@@ -58,6 +61,42 @@ class ApiKey extends Model
             $model->rate_limit = Providers::config('default_rate_limit');
             $model->saveQuietly();
         });
+    }
+
+    public function calls(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => [
+                'total' => $this->log()->count(),
+                'daily' => $this->log()->whereBetween('created_at', [
+                    now()->startOfDay(),
+                    now()->endOfDay(),
+                ])->count(),
+                'monthly' => $this->log()->whereBetween('created_at', [
+                    now()->startOfMonth(),
+                    now()->endOfMonth(),
+                ])->count(),
+                'top_endpoint' => $this->log()
+                    ->select('endpoint', DB::raw('COUNT(*) as total_calls'))
+                    ->groupBy('endpoint')
+                    ->orderByDesc('total_calls')
+                    ->first(),
+                'daily_top_endpoint' => $this->log()
+                    ->select('endpoint', DB::raw('COUNT(*) as total_calls'))
+                    ->groupBy('endpoint')
+                    ->orderByDesc('total_calls')
+                    ->whereBetween('created_at', [
+                        now()->startOfDay(),
+                        now()->endOfDay(),
+                    ])
+                    ->first(),
+            ],
+        );
+    }
+
+    public function log(): HasMany
+    {
+        return $this->hasMany(Log::class);
     }
 
     /**

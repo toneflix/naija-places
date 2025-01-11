@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\ApiKey;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,16 @@ class LogFactory extends Factory
      */
     public function definition(): array
     {
+        $routeCollection = \Illuminate\Support\Facades\Route::getRoutes();
+        $uri = collect($routeCollection->getRoutes())
+            ->shuffle()
+            ->filter(fn($r) => str($r->uri())->contains('countries'))
+            ->first();
+
         return [
-            //
+            'endpoint' => route($uri->getName(), collect($uri->parameterNames())->mapWithKeys(fn($n) => [$n => rand()])),
+            'ip_address' => $this->faker->ipv4(),
+            'api_key_id' => ApiKey::inRandomOrder()->first('id')?->id,
         ];
     }
 }
