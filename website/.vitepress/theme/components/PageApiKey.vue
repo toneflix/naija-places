@@ -103,8 +103,8 @@ type ApiKey = {
         monthlyCalls: number;
         topEndpoint: TopStat;
         dailyTopEndpoint: TopStat;
-        topOrigin: TopStat;
-        dailyTopOrigin: TopStat;
+        topReferer: TopStat;
+        dailyTopReferer: TopStat;
     };
 };
 
@@ -129,22 +129,22 @@ const list = computed<{ label: string; value: string | number | boolean }[]>(
             })`,
         },
         {
-            label: "Top Origin",
-            value: `${data.value.stats.topOrigin.url ?? "N/A"} (${
-                data.value.stats.topOrigin.calls ?? 0
+            label: "Top Referer",
+            value: `${data.value.stats.topReferer.url ?? "N/A"} (${
+                data.value.stats.topReferer.calls ?? 0
             })`,
         },
         {
-            label: "Top Origin Today",
-            value: `${data.value.stats.dailyTopOrigin.url ?? "N/A"} (${
-                data.value.stats.dailyTopOrigin.calls ?? 0
+            label: "Top Referer Today",
+            value: `${data.value.stats.dailyTopReferer.url ?? "N/A"} (${
+                data.value.stats.dailyTopReferer.calls ?? 0
             })`,
         },
         { label: "Date Created", value: data.value.createDate ?? "N/A" },
     ]
 );
 
-const { data, update, loading } = useRequest(
+const { data, loading } = useRequest(
     () =>
         alova.Get("v1/account/api-keys/" + key.value, {
             params: { with: "stats" },
@@ -162,8 +162,8 @@ const { data, update, loading } = useRequest(
                 monthlyCalls: 0,
                 topEndpoint: {},
                 dailyTopEndpoint: {},
-                topOrigin: {},
-                dailyTopOrigin: {},
+                topReferer: {},
+                dailyTopReferer: {},
             },
         },
     }

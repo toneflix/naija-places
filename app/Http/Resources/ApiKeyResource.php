@@ -31,8 +31,8 @@ class ApiKeyResource extends JsonResource
                 'monthlyCalls' => $this->calls['monthly'] ?? 0,
                 'topEndpoint' => $this->calls['top_endpoint'] ?? '',
                 'dailyTopEndpoint' => $this->calls['daily_top_endpoint'] ?? '',
-                'topOrigin' => $this->calls['top_origin'] ?? '',
-                'dailyTopOrigin' => $this->calls['daily_top_origin'] ?? '',
+                'topReferer' => $this->calls['top_referer'] ?? '',
+                'dailyTopReferer' => $this->calls['daily_top_referer'] ?? '',
             ])
         ];
     }

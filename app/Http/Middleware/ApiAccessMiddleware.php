@@ -84,6 +84,7 @@ class ApiAccessMiddleware
             'endpoint' => parse_url($request->url(), PHP_URL_PATH),
             'ip_address' => $request->ip(),
             'api_key_id' => $key->id,
+            'referer' => $request->header('referer') ?: $request->header('origin'),
         ];
 
         // Save the log request to the Log model

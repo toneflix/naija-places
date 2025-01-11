@@ -21,7 +21,6 @@ class ApiKey extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'origin',
         'rate_limited',
     ];
 
@@ -91,17 +90,17 @@ class ApiKey extends Model
                         now()->endOfDay(),
                     ])
                     ->first(),
-                'top_origin' => $this->log()
-                    ->select('origin as url', DB::raw('COUNT(*) as calls'))
+                'top_referer' => $this->log()
+                    ->select('referer as url', DB::raw('COUNT(*) as calls'))
                     ->groupBy('url')
                     ->orderByDesc('calls')
-                    ->whereNotNull('origin')
+                    ->whereNotNull('referer')
                     ->first(),
-                'daily_top_origin' => $this->log()
-                    ->select('origin as url', DB::raw('COUNT(*) as calls'))
+                'daily_top_referer' => $this->log()
+                    ->select('referer as url', DB::raw('COUNT(*) as calls'))
                     ->groupBy('url')
                     ->orderByDesc('calls')
-                    ->whereNotNull('origin')
+                    ->whereNotNull('referer')
                     ->whereBetween('created_at', [
                         now()->startOfDay(),
                         now()->endOfDay(),

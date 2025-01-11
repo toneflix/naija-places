@@ -21,6 +21,7 @@ class Log extends Model
         'ip_address',
         'api_key_id',
         'endpoint',
+        'referer',
     ];
 
     public function apiKey(): BelongsTo
