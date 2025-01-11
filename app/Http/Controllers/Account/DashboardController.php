@@ -6,10 +6,7 @@ use App\Helpers\Providers;
 use App\Http\Controllers\Controller;
 use App\Models\Log;
 use App\Services\Trend;
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {

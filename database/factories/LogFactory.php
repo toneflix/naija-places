@@ -24,6 +24,7 @@ class LogFactory extends Factory
             ->first();
 
         return [
+            'origin' => $this->faker->url(),
             'endpoint' => route($uri->getName(), collect($uri->parameterNames())->mapWithKeys(fn($n) => [$n => rand()])),
             'ip_address' => $this->faker->ipv4(),
             'api_key_id' => ApiKey::inRandomOrder()->first('id')?->id,

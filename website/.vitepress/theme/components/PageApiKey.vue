@@ -85,6 +85,10 @@ const deleting = ref<boolean>(false);
 
 store.cache.pageTitle = "API Key";
 
+type TopStat = {
+    url: string;
+    calls: number;
+};
 type ApiKey = {
     id: number;
     key: string;
@@ -97,14 +101,10 @@ type ApiKey = {
         totalCalls: number;
         dailyCalls: number;
         monthlyCalls: number;
-        topEndpoint: {
-            endpoint: string;
-            total_calls: number;
-        };
-        dailyTopEndpoint: {
-            endpoint: string;
-            total_calls: number;
-        };
+        topEndpoint: TopStat;
+        dailyTopEndpoint: TopStat;
+        topOrigin: TopStat;
+        dailyTopOrigin: TopStat;
     };
 };
 
@@ -118,14 +118,26 @@ const list = computed<{ label: string; value: string | number | boolean }[]>(
         { label: "Rate Limited", value: data.value.rateLimited ? "Yes" : "No" },
         {
             label: "Top Endpoint",
-            value: `${data.value.stats.topEndpoint.endpoint ?? "N/A"} (${
-                data.value.stats.topEndpoint.total_calls ?? 0
+            value: `${data.value.stats.topEndpoint.url ?? "N/A"} (${
+                data.value.stats.topEndpoint.calls ?? 0
             })`,
         },
         {
             label: "Top Endpoint Today",
-            value: `${data.value.stats.dailyTopEndpoint.endpoint ?? "N/A"} (${
-                data.value.stats.dailyTopEndpoint.total_calls ?? 0
+            value: `${data.value.stats.dailyTopEndpoint.url ?? "N/A"} (${
+                data.value.stats.dailyTopEndpoint.calls ?? 0
+            })`,
+        },
+        {
+            label: "Top Origin",
+            value: `${data.value.stats.topOrigin.url ?? "N/A"} (${
+                data.value.stats.topOrigin.calls ?? 0
+            })`,
+        },
+        {
+            label: "Top Origin Today",
+            value: `${data.value.stats.dailyTopOrigin.url ?? "N/A"} (${
+                data.value.stats.dailyTopOrigin.calls ?? 0
             })`,
         },
         { label: "Date Created", value: data.value.createDate ?? "N/A" },
@@ -150,6 +162,8 @@ const { data, update, loading } = useRequest(
                 monthlyCalls: 0,
                 topEndpoint: {},
                 dailyTopEndpoint: {},
+                topOrigin: {},
+                dailyTopOrigin: {},
             },
         },
     }

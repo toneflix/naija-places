@@ -23,6 +23,7 @@ class ApiKeyResource extends JsonResource
             'rateLimit' => $this->rate_limit,
             'createdAt' => $this->created_at,
             'createDate' => $this->created_at?->format('Y-m-d'),
+            'log' => $this->log,
             'rateLimited' => $this->rate_limited,
             'stats' => $this->when($with->contains('stats'), fn() => [
                 'totalCalls' => $this->calls['total'] ?? 0,
@@ -30,6 +31,8 @@ class ApiKeyResource extends JsonResource
                 'monthlyCalls' => $this->calls['monthly'] ?? 0,
                 'topEndpoint' => $this->calls['top_endpoint'] ?? '',
                 'dailyTopEndpoint' => $this->calls['daily_top_endpoint'] ?? '',
+                'topOrigin' => $this->calls['top_origin'] ?? '',
+                'dailyTopOrigin' => $this->calls['daily_top_origin'] ?? '',
             ])
         ];
     }

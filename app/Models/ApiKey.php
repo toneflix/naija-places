@@ -21,6 +21,7 @@ class ApiKey extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'origin',
         'rate_limited',
     ];
 
@@ -77,14 +78,30 @@ class ApiKey extends Model
                     now()->endOfMonth(),
                 ])->count(),
                 'top_endpoint' => $this->log()
-                    ->select('endpoint', DB::raw('COUNT(*) as total_calls'))
-                    ->groupBy('endpoint')
-                    ->orderByDesc('total_calls')
+                    ->select('endpoint as url', DB::raw('COUNT(*) as calls'))
+                    ->groupBy('url')
+                    ->orderByDesc('calls')
                     ->first(),
                 'daily_top_endpoint' => $this->log()
-                    ->select('endpoint', DB::raw('COUNT(*) as total_calls'))
-                    ->groupBy('endpoint')
-                    ->orderByDesc('total_calls')
+                    ->select('endpoint as url', DB::raw('COUNT(*) as calls'))
+                    ->groupBy('url')
+                    ->orderByDesc('calls')
+                    ->whereBetween('created_at', [
+                        now()->startOfDay(),
+                        now()->endOfDay(),
+                    ])
+                    ->first(),
+                'top_origin' => $this->log()
+                    ->select('origin as url', DB::raw('COUNT(*) as calls'))
+                    ->groupBy('url')
+                    ->orderByDesc('calls')
+                    ->whereNotNull('url')
+                    ->first(),
+                'daily_top_origin' => $this->log()
+                    ->select('origin as url', DB::raw('COUNT(*) as calls'))
+                    ->groupBy('url')
+                    ->orderByDesc('calls')
+                    ->whereNotNull('url')
                     ->whereBetween('created_at', [
                         now()->startOfDay(),
                         now()->endOfDay(),
