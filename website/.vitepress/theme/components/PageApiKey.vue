@@ -117,18 +117,18 @@ const list = computed<{ label: string; value: string | number | boolean }[]>(
         },
         { label: "Rate Limited", value: data.value.rateLimited ? "Yes" : "No" },
         {
-            label: "Top Enpoint",
-            value: `${data.value.stats.topEndpoint.endpoint ?? "--"} (${
+            label: "Top Endpoint",
+            value: `${data.value.stats.topEndpoint.endpoint ?? "N/A"} (${
                 data.value.stats.topEndpoint.total_calls ?? 0
             })`,
         },
         {
-            label: "Top Enpoint Today",
-            value: `${data.value.stats.dailyTopEndpoint.endpoint ?? "--"} (${
+            label: "Top Endpoint Today",
+            value: `${data.value.stats.dailyTopEndpoint.endpoint ?? "N/A"} (${
                 data.value.stats.dailyTopEndpoint.total_calls ?? 0
             })`,
         },
-        { label: "Date Created", value: data.value.createDate ?? "--" },
+        { label: "Date Created", value: data.value.createDate ?? "N/A" },
     ]
 );
 
