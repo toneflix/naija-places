@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('logs', function (Blueprint $table) {
-            $table->string('referer')->nullable();
+            $table->string('referer')->nullable()->after('endpoint');
         });
     }
 
