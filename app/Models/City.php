@@ -21,6 +21,7 @@ class City extends Model
     {
         return $this->where('id', $value)
             ->orWhere('slug', $value)
+            ->orWhere('name', $value)
             ->firstOrFail();
     }
 

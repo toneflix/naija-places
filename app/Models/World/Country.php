@@ -36,6 +36,7 @@ class Country extends Model
     {
         return $this->where('id', $value)
             ->orWhere('iso2', $value)
+            ->orWhere('name', $value)
             ->firstOrFail();
     }
 

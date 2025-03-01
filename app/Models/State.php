@@ -30,6 +30,7 @@ class State extends Model
             ->orWhereRaw('LOWER(code) = ?', [mb_strtolower($value)])
             ->orWhere('slug', $value)
             ->orWhere('code', $value)
+            ->orWhere('name', $value)
             ->firstOrFail();
     }
 
