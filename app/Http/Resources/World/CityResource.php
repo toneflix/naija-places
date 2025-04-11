@@ -24,10 +24,10 @@ class CityResource extends JsonResource
             "country_code" => $this->country_code,
             "latitude" => $this->latitude,
             "longitude" => $this->longitude,
-            "created_at" => $this->created_at?->toString(),
-            "updated_at" => $this->updated_at?->toString(),
             "flag" => $this->flag,
             "wiki_data_id" => $this->wiki_data_id,
+            "created_at" => $this->created_at?->toString(),
+            "updated_at" => $this->updated_at?->toString(),
         ];
     }
 }
