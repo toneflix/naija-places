@@ -73,13 +73,13 @@ class FilterableTest extends TestCase
         $response->assertOk();
 
         $this->assertSame(
-            collect($response->json('data'))->firstWhere('iso2', 'GH'),
-            (new CountryResource(Country::whereIso2('GH')->first()))->resolve()
+            collect($response->json('data'))->firstWhere('iso2', 'GH')['id'],
+            (new CountryResource(Country::whereIso2('GH')->first()))->resolve()['id']
         );
 
         $this->assertSame(
-            collect($response->json('data'))->firstWhere('iso2', 'NG'),
-            (new CountryResource(Country::whereIso2('NG')->first()))->resolve()
+            collect($response->json('data'))->firstWhere('iso2', 'NG')['id'],
+            (new CountryResource(Country::whereIso2('NG')->first()))->resolve()['id']
         );
 
         $response = $this->get('/api/v1/countries?allowed=NG,GH', [
@@ -89,13 +89,13 @@ class FilterableTest extends TestCase
         $response->assertOk();
 
         $this->assertSame(
-            collect($response->json('data'))->firstWhere('iso2', 'GH'),
-            (new CountryResource(Country::whereIso2('GH')->first()))->resolve()
+            collect($response->json('data'))->firstWhere('iso2', 'GH')['id'],
+            (new CountryResource(Country::whereIso2('GH')->first()))->resolve()['id']
         );
 
         $this->assertSame(
-            collect($response->json('data'))->firstWhere('iso2', 'NG'),
-            (new CountryResource(Country::whereIso2('NG')->first()))->resolve()
+            collect($response->json('data'))->firstWhere('iso2', 'NG')['id'],
+            (new CountryResource(Country::whereIso2('NG')->first()))->resolve()['id']
         );
     }
 
@@ -108,8 +108,8 @@ class FilterableTest extends TestCase
         $response->assertOk();
 
         $this->assertSame(
-            collect($response->json('data'))->firstWhere('iso2', 'RI'),
-            (new StateResource(State::whereIso2('RI')->whereCountryCode('NG')->first()))->resolve()
+            collect($response->json('data'))->firstWhere('iso2', 'RI')['id'],
+            (new StateResource(State::whereIso2('RI')->whereCountryCode('NG')->first()))->resolve()['id']
         );
 
         $this->assertNull(
@@ -126,8 +126,8 @@ class FilterableTest extends TestCase
         $response->assertOk();
 
         $this->assertSame(
-            collect($response->json('data'))->firstWhere('iso2', 'RI'),
-            (new StateResource(State::whereIso2('RI')->whereCountryCode('NG')->first()))->resolve()
+            collect($response->json('data'))->firstWhere('iso2', 'RI')['id'],
+            (new StateResource(State::whereIso2('RI')->whereCountryCode('NG')->first()))->resolve()['id']
         );
 
         $this->assertNull(
@@ -144,8 +144,8 @@ class FilterableTest extends TestCase
         $response->assertOk();
 
         $this->assertSame(
-            collect($response->json('data'))->firstWhere('id', '148553'),
-            (new CityResource(City::whereId('148553')->first()))->resolve()
+            collect($response->json('data'))->firstWhere('id', '148553')['id'],
+            (new CityResource(City::whereId('148553')->first()))->resolve()['id']
         );
 
         $this->assertNull(
@@ -162,8 +162,8 @@ class FilterableTest extends TestCase
         $response->assertOk();
 
         $this->assertSame(
-            collect($response->json('data'))->firstWhere('id', '148553'),
-            (new CityResource(City::whereId('148553')->whereCountryCode('NG')->first()))->resolve()
+            collect($response->json('data'))->firstWhere('id', '148553')['id'],
+            (new CityResource(City::whereId('148553')->whereCountryCode('NG')->first()))->resolve()['id']
         );
 
         $this->assertNull(
