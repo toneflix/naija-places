@@ -2,6 +2,7 @@
 
 namespace App\Models\World;
 
+use App\Traits\PlaceFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -10,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Country extends Model
 {
     use HasFactory;
+    use PlaceFilter;
     use \App\Traits\ModelCanExtend;
 
     /**
@@ -34,10 +36,31 @@ class Country extends Model
      */
     public function resolveRouteBinding($value, $field = null)
     {
-        return $this->where('id', $value)
-            ->orWhere('iso2', $value)
+        return $this
+            ->where('iso2', $value)
+            ->orWhere('id', (int)$value)
             ->orWhere('name', $value)
             ->firstOrFail();
+    }
+
+    /**
+     * Retrieve the child model for a bound value.
+     *
+     * @param  string  $childType
+     * @param  mixed  $value
+     * @param  string|null  $field
+     * @return \Illuminate\Database\Eloquent\Model|null
+     */
+    public function resolveChildRouteBinding($childType, $value, $field)
+    {
+        if (in_array($childType, ['state'])) {
+            return $this->{str($childType)->plural()->toString()}()
+                ->where('iso2', $value)
+                ->orWhere('id', (int)$value)
+                ->orWhere('name', $value)
+                ->firstOrFail();
+        }
+        return parent::resolveChildRouteBinding($childType, $value, $field);
     }
 
     /**

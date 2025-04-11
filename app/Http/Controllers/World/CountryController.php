@@ -13,9 +13,20 @@ class CountryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        @[
+            'allowed' => $allowed,
+            'banned' => $banned,
+        ] = $this->validate($request, [
+            'allowed' => ['nullable', 'string'],
+            'banned' => ['nullable', 'string'],
+        ]);
+
         $query = Country::query();
+
+        $query->when($allowed, fn($q) => $q->onlyAllowed($allowed));
+        $query->when($banned, fn($q) => $q->notBanned($banned));
 
         $countries = $query->get();
 

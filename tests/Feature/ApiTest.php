@@ -6,12 +6,8 @@ use App\Http\Resources\LgaResource;
 use App\Http\Resources\StateResource;
 use App\Http\Resources\UnitResource;
 use App\Http\Resources\WardResource;
-use App\Models\Lga;
 use App\Models\State;
-use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Routing\Middleware\ThrottleRequests;
-use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 class ApiTest extends TestCase

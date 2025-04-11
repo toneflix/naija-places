@@ -14,9 +14,20 @@ class CityController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Country $country, State $state)
+    public function index(Request $request, Country $country, State $state)
     {
+        @[
+            'allowed' => $allowed,
+            'banned' => $banned,
+        ] = $this->validate($request, [
+            'allowed' => ['nullable', 'string'],
+            'banned' => ['nullable', 'string'],
+        ]);
+
         $query = $state->cities();
+
+        $query->when($allowed, fn($q) => $q->onlyAllowed($allowed, 'id'));
+        $query->when($banned, fn($q) => $q->notBanned($banned, 'id'));
 
         $cities = $query->get();
 

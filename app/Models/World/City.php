@@ -2,12 +2,15 @@
 
 namespace App\Models\World;
 
+use App\Traits\PlaceFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class City extends Model
 {
     use HasFactory;
+    use PlaceFilter;
     use \App\Traits\ModelCanExtend;
 
     protected $table = 'world_cities';
@@ -22,5 +25,15 @@ class City extends Model
         return [
             'flag' => 'boolean',
         ];
+    }
+
+    /**
+     * Get state for the City
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function state(): BelongsTo
+    {
+        return $this->belongsTo(State::class);
     }
 }

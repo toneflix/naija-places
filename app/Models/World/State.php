@@ -2,13 +2,16 @@
 
 namespace App\Models\World;
 
+use App\Traits\PlaceFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class State extends Model
 {
     use HasFactory;
+    use PlaceFilter;
     use \App\Traits\ModelCanExtend;
 
     protected $table = 'world_states';
@@ -33,10 +36,21 @@ class State extends Model
      */
     public function resolveRouteBinding($value, $field = null)
     {
-        return $this->where('id', $value)
-            ->orWhere('iso2', $value)
+        return $this
+            ->where('iso2', $value)
+            ->orWhere('id', (int)$value)
             ->orWhere('name', $value)
             ->firstOrFail();
+    }
+
+    /**
+     * Get country for the State
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function country(): BelongsTo
+    {
+        return $this->belongsTo(Country::class);
     }
 
     /**
