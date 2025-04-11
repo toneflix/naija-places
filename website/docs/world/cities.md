@@ -22,6 +22,13 @@ In: header
 | \{iso\}  | URL | ISO2 Code of Country | <Badge type="danger" text="YES" /> | String |
 | \{siso\} | URL | ISO2 Code of State   | <Badge type="danger" text="YES" /> | String |
 
+## Query Parameters
+
+| Code        | In  | Description                              | Required                        | Type   |
+| ----------- | --- | ---------------------------------------- | ------------------------------- | ------ |
+| \{allowed\} | URL | Comma separated list of allowed City IDs | <Badge type="info" text="NO" /> | String |
+| \{banned\}  | URL | Comma separated list of banned City IDs  | <Badge type="info" text="NO" /> | String |
+
 ## Response Types
 
 | Code | Description                                                          |

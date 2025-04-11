@@ -19,6 +19,13 @@ In: header
 
 This endpoint does not require any parameters
 
+## Query Parameters
+
+| Code        | In  | Description                                        | Required                        | Type   |
+| ----------- | --- | -------------------------------------------------- | ------------------------------- | ------ |
+| \{allowed\} | URL | Comma separated list of allowed ISO2 Country Codes | <Badge type="info" text="NO" /> | String |
+| \{banned\}  | URL | Comma separated list of banned ISO2 Country Codes  | <Badge type="info" text="NO" /> | String |
+
 ## Response Types
 
 | Code | Description                                  |
