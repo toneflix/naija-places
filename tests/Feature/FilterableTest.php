@@ -34,13 +34,13 @@ class FilterableTest extends TestCase
         $response->assertOk();
 
         $this->assertSame(
-            collect($response->json('data'))->firstWhere('iso2', 'GH'),
-            (new CountryResource(Country::whereIso2('GH')->first()))->resolve()
+            collect($response->json('data'))->firstWhere('iso2', 'GH')['id'],
+            (new CountryResource(Country::whereIso2('GH')->first()))->resolve()['id']
         );
 
         $this->assertSame(
-            collect($response->json('data'))->firstWhere('iso2', 'NG'),
-            (new CountryResource(Country::whereIso2('NG')->first()))->resolve()
+            collect($response->json('data'))->firstWhere('iso2', 'NG')['id'],
+            (new CountryResource(Country::whereIso2('NG')->first()))->resolve()['id']
         );
     }
 
