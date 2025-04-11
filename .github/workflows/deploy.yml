@@ -1,0 +1,34 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - stagging
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      DEPLOY_KEY: ${{ secrets.DEPLOY_KEY}}
+      DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+      DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+      DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+      DEPLOY_USER_GROUP: ${{ secrets.DEPLOY_USER_GROUP }}
+
+    steps:
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "${{ env.DEPLOY_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H ${{ env.DEPLOY_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy and Run Updates
+        run: |
+          ssh -i ~/.ssh/deploy_key ${{ env.DEPLOY_USER }}@${{ env.DEPLOY_HOST }} '
+            cd ${{ env.DEPLOY_PATH }} && \
+            chown -R ${{ env.DEPLOY_USER_GROUP }} $(pwd) && \
+            chmod +x deploy.sh && \
+            ./deploy.sh
+          '

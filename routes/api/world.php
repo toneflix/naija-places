@@ -55,7 +55,7 @@ Route::scopeBindings()
 
         // Countries
         Route::get('/{region}/countries', [CountryController::class, 'index'])
-            ->name('index');
+            ->name('countries.index');
     });
 
 Route::scopeBindings()

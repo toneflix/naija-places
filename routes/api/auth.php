@@ -46,7 +46,7 @@ Route::middleware('auth:sanctum')->prefix('account')->group(function () {
         ->name('authenticated.devices');
 
     Route::post('devices/logout', [AuthenticatedSessionController::class, 'destroyTokens'])
-        ->name('logout');
+        ->name('devices.logout');
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');

@@ -29,7 +29,6 @@ return [
     */
     'roles' => [
         'admin',
-        'manager',
         'super-admin',
     ],
     /*
@@ -68,6 +67,5 @@ return [
     */
     'exclusions' => [
         'admin' => ['manage-admins'],
-        'manager' => ['manage-admins'],
     ],
 ];
