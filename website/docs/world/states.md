@@ -114,6 +114,160 @@ if (response.statusCode == 200) {
 
 :::
 
+## Only Allowed States
+
+::: code-group
+
+```js [javascript]
+const headers = new Headers();
+const options = {
+    method: "GET",
+    headers: headers,
+    redirect: "follow",
+};
+
+headers.append("X-Api-Key", "API_KEY");
+
+fetch(
+    "https://naija-places.toneflix.com.ng/api/v1/countries/NG/states?allowed=ri,ab,ka",
+    options
+)
+    .then((response) => response.json())
+    .then((result) => console.log(result))
+    .catch((error) => console.log("error", error));
+```
+
+```php [php]
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => 'https://naija-places.toneflix.com.ng/api/v1/countries/NG/states?allowed=ri,ab,ka',
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_HTTPHEADER => array(
+    'X-Api-Key: API_KEY'
+  ),
+));
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+echo $response;
+```
+
+```js [axios]
+import axios from "axios";
+
+axios
+    .get("https://naija-places.toneflix.com.ng/api/v1/countries/NG/states?allowed=ri,ab,ka", {
+        headers: {
+            X-Api-Key: "API_KEY",
+        },
+    })
+    .then(({ data }) => {
+        console.log(data);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+```
+
+```dart [dart]
+var headers = {
+  'X-Api-Key': 'API_KEY'
+};
+
+var request = http.Request('GET', Uri.parse('https://naija-places.toneflix.com.ng/api/v1/countries/NG/states?allowed=ri,ab,ka'));
+
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+} else {
+  print(response.reasonPhrase);
+}
+```
+
+:::
+
+## Banned States
+
+::: code-group
+
+```js [javascript]
+const headers = new Headers();
+const options = {
+    method: "GET",
+    headers: headers,
+    redirect: "follow",
+};
+
+headers.append("X-Api-Key", "API_KEY");
+
+fetch(
+    "https://naija-places.toneflix.com.ng/api/v1/countries/NG/states?banned=ma",
+    options
+)
+    .then((response) => response.json())
+    .then((result) => console.log(result))
+    .catch((error) => console.log("error", error));
+```
+
+```php [php]
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => 'https://naija-places.toneflix.com.ng/api/v1/countries/NG/states?banned=ma',
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_HTTPHEADER => array(
+    'X-Api-Key: API_KEY'
+  ),
+));
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+echo $response;
+```
+
+```js [axios]
+import axios from "axios";
+
+axios
+    .get("https://naija-places.toneflix.com.ng/api/v1/countries/NG/states?banned=ma", {
+        headers: {
+            X-Api-Key: "API_KEY",
+        },
+    })
+    .then(({ data }) => {
+        console.log(data);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+```
+
+```dart [dart]
+var headers = {
+  'X-Api-Key': 'API_KEY'
+};
+
+var request = http.Request('GET', Uri.parse('https://naija-places.toneflix.com.ng/api/v1/countries/NG/states?banned=ma'));
+
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+} else {
+  print(response.reasonPhrase);
+}
+```
+
+:::
+
 ### 200 Success Response
 
 ```json
