@@ -12,3 +12,13 @@ Route::get('/', function () {
         )
         ->toString();
 });
+
+Route::fallback(function () {
+    return str(File::get(public_path('index.html')))
+        ->replace(
+            '</head>',
+            '<meta name="csrf-token" content="' . csrf_token() . '">
+            </head>'
+        )
+        ->toString();
+});
