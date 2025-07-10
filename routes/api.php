@@ -15,8 +15,6 @@ Route::prefix('v1')->group(function () {
     }
 
     Route::get('/', function (Request $request) {
-        \Artisan::call('app:set-config freemium_domains ""');
-        dd(Artisan::output());
         return [
             'api' => config('app.name'),
             'version' => '1.0.1'
@@ -31,6 +29,13 @@ Route::prefix('v1')->group(function () {
 //     Artisan::call($cmd, $params);
 //     dd(Artisan::output());
 // });
+
+Route::get('/sync-freemium', function () {
+    $domains = str_ireplace('"', '\"', preg_replace('/\s+/', '', File::get(base_path('freemium-domains.json'))));
+
+    \Artisan::call('app:set-config freemium_domains ' . $domains);
+    echo Artisan::output();
+});
 
 Route::get('/', function () {
     return [
